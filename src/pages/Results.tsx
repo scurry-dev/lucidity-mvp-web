@@ -36,10 +36,10 @@ const Results = () => {
   ];
 
   const platformData = [
-    { platform: "Google Ads", value: 45, color: "#3B82F6" },
-    { platform: "Meta Ads", value: 30, color: "#8B5CF6" },
-    { platform: "TikTok", value: 15, color: "#EF4444" },
-    { platform: "LinkedIn", value: 10, color: "#10B981" }
+    { platform: "Google Ads", value: 45, color: "#60A5FA" },
+    { platform: "Meta Ads", value: 30, color: "#A78BFA" },
+    { platform: "TikTok", value: 15, color: "#F87171" },
+    { platform: "LinkedIn", value: 10, color: "#6EE7B7" }
   ];
 
   const insights = [
@@ -181,22 +181,24 @@ const Results = () => {
             <CardContent>
               <ResponsiveContainer width="100%" height={300}>
                 <LineChart data={performanceData}>
-                  <CartesianGrid strokeDasharray="3 3" />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" strokeOpacity={0.5} />
                   <XAxis dataKey="month" />
                   <YAxis />
                   <Tooltip />
                   <Line 
                     type="monotone" 
                     dataKey="clicks" 
-                    stroke="#3B82F6" 
-                    strokeWidth={3}
+                    stroke="#60A5FA" 
+                    strokeWidth={2}
+                    strokeOpacity={0.8}
                     name="Clicks"
                   />
                   <Line 
                     type="monotone" 
                     dataKey="conversions" 
-                    stroke="#8B5CF6" 
-                    strokeWidth={3}
+                    stroke="#A78BFA" 
+                    strokeWidth={2}
+                    strokeOpacity={0.8}
                     name="Conversions"
                   />
                 </LineChart>
