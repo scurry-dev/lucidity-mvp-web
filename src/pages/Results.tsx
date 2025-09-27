@@ -35,29 +35,11 @@ const Results = () => {
     { month: "Jun", clicks: 18200, conversions: 2100, cost: 12000 }
   ];
 
-  const conversionsData = [
-    { name: "Paid", value: 695.9, color: "hsl(var(--chart-1))" },
-    { name: "Un-Paid", value: 1380.1, color: "hsl(var(--muted))" }
-  ];
-
-  const impressionsData = [
-    { name: "Google Ads", value: 14.62, color: "hsl(var(--chart-1))" },
-    { name: "Meta Ads", value: 24.87, color: "hsl(var(--muted))" }
-  ];
-
-  const visitorsData = [
-    { name: "Google Ads", value: 194, color: "hsl(var(--chart-1))" },
-    { name: "Meta Ads", value: 215, color: "hsl(var(--muted))" }
-  ];
-
-  const spendRevenueData = [
-    { metric: "Spend", current: 85000, previous: 88000, label: "Current Period" },
-    { metric: "Revenue", current: 195000, previous: 208000, label: "Current Period" }
-  ];
-
-  const kpiData = [
-    { platform: "Google Ads", cpm: 13, aov: 403, cpa: 363, roas: 1.11 },
-    { platform: "Meta Ads", cpm: 3, aov: 370.95, cpa: 456, roas: 0.81 }
+  const platformData = [
+    { platform: "Google Ads", value: 45, color: "#4285F4" },
+    { platform: "Meta Ads", value: 30, color: "#1877F2" },
+    { platform: "TikTok", value: 15, color: "#FF0050" },
+    { platform: "LinkedIn", value: 10, color: "#0A66C2" }
   ];
 
   const insights = [
@@ -190,207 +172,61 @@ const Results = () => {
           </Card>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-6 mb-8">
-          {/* Conversions Overview */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Conversions Overall</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ResponsiveContainer width="100%" height={200}>
-                <PieChart>
-                  <Pie
-                    data={conversionsData}
-                    cx="50%"
-                    cy="50%"
-                    outerRadius={60}
-                    dataKey="value"
-                    label={({ name, value }) => `${value}`}
-                  >
-                    {conversionsData.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={entry.color} />
-                    ))}
-                  </Pie>
-                  <Tooltip />
-                </PieChart>
-              </ResponsiveContainer>
-              <div className="flex items-center gap-4 mt-2">
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-chart-1"></div>
-                  <span className="text-sm text-muted-foreground">Paid</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-muted"></div>
-                  <span className="text-sm text-muted-foreground">Un-Paid</span>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Impressions */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Impressions</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ResponsiveContainer width="100%" height={200}>
-                <PieChart>
-                  <Pie
-                    data={impressionsData}
-                    cx="50%"
-                    cy="50%"
-                    outerRadius={60}
-                    dataKey="value"
-                    label={({ name, value }) => `${value}M`}
-                  >
-                    {impressionsData.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={entry.color} />
-                    ))}
-                  </Pie>
-                  <Tooltip />
-                </PieChart>
-              </ResponsiveContainer>
-              <div className="flex items-center gap-4 mt-2">
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-chart-1"></div>
-                  <span className="text-sm text-muted-foreground">Google Ads</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-muted"></div>
-                  <span className="text-sm text-muted-foreground">Meta Ads</span>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Visitors */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Visitors</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ResponsiveContainer width="100%" height={200}>
-                <PieChart>
-                  <Pie
-                    data={visitorsData}
-                    cx="50%"
-                    cy="50%"
-                    outerRadius={60}
-                    dataKey="value"
-                    label={({ name, value }) => `${value}K`}
-                  >
-                    {visitorsData.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={entry.color} />
-                    ))}
-                  </Pie>
-                  <Tooltip />
-                </PieChart>
-              </ResponsiveContainer>
-              <div className="flex items-center gap-4 mt-2">
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-chart-1"></div>
-                  <span className="text-sm text-muted-foreground">Google Ads</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-muted"></div>
-                  <span className="text-sm text-muted-foreground">Meta Ads</span>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Spend/Revenue and KPIs */}
         <div className="grid lg:grid-cols-2 gap-6 mb-8">
-          {/* Spend/Revenue */}
+          {/* Performance Chart */}
           <Card>
             <CardHeader>
-              <CardTitle>Spend/Revenue</CardTitle>
+              <CardTitle>Performance Trends</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="space-y-6">
-                {spendRevenueData.map((item, index) => (
-                  <div key={index}>
-                    <div className="flex justify-between items-center mb-2">
-                      <span className="text-sm font-medium">{item.metric}</span>
-                      <span className="text-sm text-muted-foreground">
-                        PoP: {((item.current - item.previous) / item.previous * 100).toFixed(1)}%
-                      </span>
-                    </div>
-                    <div className="flex h-8">
-                      <div 
-                        className="bg-muted flex items-center justify-center text-xs"
-                        style={{ width: `${(item.previous / 250000) * 100}%` }}
-                      >
-                        PoP: 0.0%
-                      </div>
-                      <div 
-                        className="bg-chart-1 flex items-center justify-center text-xs text-white"
-                        style={{ width: `${(item.current / 250000) * 100}%` }}
-                      >
-                        PoP: {((item.current - item.previous) / item.previous * 100).toFixed(1)}%
-                      </div>
-                    </div>
-                    <div className="flex justify-between text-xs text-muted-foreground mt-1">
-                      <span>$0K</span>
-                      <span>$250K</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              <ResponsiveContainer width="100%" height={300}>
+                <LineChart data={performanceData}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="month" />
+                  <YAxis />
+                  <Tooltip />
+                  <Line 
+                    type="monotone" 
+                    dataKey="clicks" 
+                    stroke="#14b8a6" 
+                    strokeWidth={2}
+                    name="Clicks"
+                  />
+                  <Line 
+                    type="monotone" 
+                    dataKey="conversions" 
+                    stroke="#8b5cf6" 
+                    strokeWidth={2}
+                    name="Conversions"
+                  />
+                </LineChart>
+              </ResponsiveContainer>
             </CardContent>
           </Card>
 
-          {/* KPIs */}
+          {/* Platform Distribution */}
           <Card>
             <CardHeader>
-              <CardTitle>KPIs</CardTitle>
+              <CardTitle>Platform Performance Distribution</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="space-y-4">
-                <div className="grid grid-cols-4 gap-4 text-xs font-medium text-muted-foreground">
-                  <span></span>
-                  <span>CPM</span>
-                  <span>AOV</span>
-                  <span>CPA</span>
-                  <span>ROAS</span>
-                </div>
-                {kpiData.map((platform, index) => (
-                  <div key={index} className="grid grid-cols-5 gap-4 items-center">
-                    <span className="text-sm font-medium">{platform.platform}</span>
-                    <div className="flex items-center gap-2">
-                      <div className="flex-1 h-6 bg-chart-1 rounded flex items-center justify-center text-xs text-white">
-                        ${platform.cpm}
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="flex-1 h-6 bg-chart-1 rounded flex items-center justify-center text-xs text-white">
-                        ${platform.aov}
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="flex-1 h-6 bg-chart-1 rounded flex items-center justify-center text-xs text-white">
-                        ${platform.cpa}
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="flex-1 h-6 bg-muted rounded flex items-center justify-center text-xs">
-                        {platform.roas}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-                <div className="flex justify-end items-center gap-4 mt-4 text-xs">
-                  <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 rounded-full bg-chart-1"></div>
-                    <span>Google Ads</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 rounded-full bg-muted"></div>
-                    <span>Meta Ads</span>
-                  </div>
-                </div>
-              </div>
+              <ResponsiveContainer width="100%" height={300}>
+                <PieChart>
+                  <Pie
+                    data={platformData}
+                    cx="50%"
+                    cy="50%"
+                    outerRadius={80}
+                    dataKey="value"
+                    label={({ platform, value }) => `${platform}: ${value}%`}
+                  >
+                    {platformData.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={entry.color} />
+                    ))}
+                  </Pie>
+                  <Tooltip />
+                </PieChart>
+              </ResponsiveContainer>
             </CardContent>
           </Card>
         </div>
