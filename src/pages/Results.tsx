@@ -1,11 +1,8 @@
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { 
-  BarChart, 
-  Bar, 
   LineChart, 
   Line, 
   XAxis, 
@@ -17,13 +14,15 @@ import {
   Pie,
   Cell
 } from "recharts";
-import { ArrowLeft, Download, Share2, MessageSquare, TrendingUp, TrendingDown, DollarSign, MousePointer } from "lucide-react";
+import { ArrowLeft, Download, Share2, TrendingUp, TrendingDown, DollarSign, MousePointer } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { useNavigate } from "react-router-dom";
+import ResultsChat from "@/components/ResultsChat";
+import ReferencableItem from "@/components/ReferencableItem";
 
 const Results = () => {
   const navigate = useNavigate();
-  const [chatInput, setChatInput] = useState("");
+  const [chatReference, setChatReference] = useState("");
 
   // Mock data for charts
   const performanceData = [
@@ -63,11 +62,8 @@ const Results = () => {
     }
   ];
 
-  const handleChatSubmit = () => {
-    if (chatInput.trim()) {
-      // Simulate AI response
-      setChatInput("");
-    }
+  const handleChatReference = (reference: string) => {
+    setChatReference(reference);
   };
 
   return (
@@ -101,8 +97,12 @@ const Results = () => {
       </header>
 
       <main className="max-w-7xl mx-auto p-6">
-        {/* Summary Cards */}
-        <div className="grid md:grid-cols-4 gap-6 mb-8">
+        <div className="grid lg:grid-cols-4 gap-6">
+          {/* Main content area */}
+          <div className="lg:col-span-3 space-y-8">
+            {/* Summary Cards */}
+            <ReferencableItem id="metrics-overview" title="Key Metrics Overview" type="metric" onReference={handleChatReference}>
+              <div className="grid md:grid-cols-4 gap-6">
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Total Clicks</CardTitle>
@@ -170,11 +170,13 @@ const Results = () => {
               </p>
             </CardContent>
           </Card>
-        </div>
+              </div>
+            </ReferencableItem>
 
-        <div className="grid lg:grid-cols-2 gap-6 mb-8">
+            <div className="grid lg:grid-cols-2 gap-6">
           {/* Performance Chart */}
-          <Card>
+          <ReferencableItem id="chart-1" title="Performance Trends" type="chart" onReference={handleChatReference}>
+            <Card>
             <CardHeader>
               <CardTitle>Performance Trends</CardTitle>
             </CardHeader>
@@ -204,10 +206,12 @@ const Results = () => {
                 </LineChart>
               </ResponsiveContainer>
             </CardContent>
-          </Card>
+            </Card>
+          </ReferencableItem>
 
           {/* Platform Distribution */}
-          <Card>
+          <ReferencableItem id="chart-2" title="Platform Performance Distribution" type="chart" onReference={handleChatReference}>
+            <Card>
             <CardHeader>
               <CardTitle>Platform Performance Distribution</CardTitle>
             </CardHeader>
@@ -230,67 +234,58 @@ const Results = () => {
                 </PieChart>
               </ResponsiveContainer>
             </CardContent>
-          </Card>
-        </div>
+            </Card>
+          </ReferencableItem>
+            </div>
 
-        {/* AI Insights */}
-        <Card className="mb-8">
+            {/* AI Insights */}
+            <ReferencableItem id="insights" title="AI-Generated Insights & Recommendations" type="insight" onReference={handleChatReference}>
+              <Card>
           <CardHeader>
             <CardTitle>AI-Generated Insights & Recommendations</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
               {insights.map((insight, index) => (
-                <div key={index} className="border rounded-lg p-4">
-                  <div className="flex items-start gap-3">
-                    <Badge 
-                      variant={insight.type === "positive" ? "default" : "destructive"}
-                      className="mt-1"
-                    >
-                      {insight.type === "positive" ? "Opportunity" : "Alert"}
-                    </Badge>
-                    <div className="flex-1">
-                      <h4 className="font-semibold mb-1">{insight.title}</h4>
-                      <p className="text-muted-foreground text-sm mb-2">{insight.description}</p>
-                      <p className="text-sm font-medium text-primary">
-                        Recommended Action: {insight.action}
-                      </p>
+                <ReferencableItem 
+                  key={index} 
+                  id={`insight-${index + 1}`} 
+                  title={insight.title} 
+                  type="insight" 
+                  onReference={handleChatReference}
+                >
+                  <div className="border rounded-lg p-4">
+                    <div className="flex items-start gap-3">
+                      <Badge 
+                        variant={insight.type === "positive" ? "default" : "destructive"}
+                        className="mt-1"
+                      >
+                        {insight.type === "positive" ? "Opportunity" : "Alert"}
+                      </Badge>
+                      <div className="flex-1">
+                        <h4 className="font-semibold mb-1">{insight.title}</h4>
+                        <p className="text-muted-foreground text-sm mb-2">{insight.description}</p>
+                        <p className="text-sm font-medium text-primary">
+                          Recommended Action: {insight.action}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </ReferencableItem>
               ))}
             </div>
           </CardContent>
-        </Card>
+              </Card>
+            </ReferencableItem>
+          </div>
 
-        {/* Chat Interface */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <MessageSquare className="h-5 w-5" />
-              Ask Questions About Your Data
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="flex gap-3">
-              <Input
-                placeholder="Ask about performance, suggestions, or request chart modifications..."
-                value={chatInput}
-                onChange={(e) => setChatInput(e.target.value)}
-                onKeyPress={(e) => e.key === "Enter" && handleChatSubmit()}
-                className="flex-1"
-              />
-              <Button onClick={handleChatSubmit} disabled={!chatInput.trim()}>
-                Send
-              </Button>
-            </div>
-            <div className="mt-4 p-4 bg-muted/50 rounded-lg">
-              <p className="text-sm text-muted-foreground">
-                💡 Try asking: "Which platform has the best ROI?" or "How can I improve my CTR?"
-              </p>
-            </div>
-          </CardContent>
-        </Card>
+          {/* AI Chat Sidebar */}
+          <div className="lg:col-span-1">
+            <Card className="sticky top-6 h-fit">
+              <ResultsChat onInsertReference={handleChatReference} />
+            </Card>
+          </div>
+        </div>
       </main>
     </div>
   );

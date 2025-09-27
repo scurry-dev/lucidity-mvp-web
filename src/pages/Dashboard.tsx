@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Plus, FileText, Calendar, TrendingUp } from "lucide-react";
+import { Plus, FileText, Calendar, TrendingUp, Settings } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { useNavigate } from "react-router-dom";
 
@@ -39,10 +39,16 @@ const Dashboard = () => {
             <img src={logo} alt="Lucidity" className="h-8" />
             <h1 className="text-2xl font-bold text-foreground">Ad Report Generator</h1>
           </div>
-          <Button onClick={() => navigate("/setup")} className="flex items-center gap-2">
-            <Plus className="h-4 w-4" />
-            New Report
-          </Button>
+          <div className="flex gap-3">
+            <Button onClick={() => navigate("/agency-setup")} variant="outline" className="flex items-center gap-2">
+              <Settings className="h-4 w-4" />
+              Agency Setup
+            </Button>
+            <Button onClick={() => navigate("/setup")} className="flex items-center gap-2">
+              <Plus className="h-4 w-4" />
+              New Report
+            </Button>
+          </div>
         </div>
       </header>
 

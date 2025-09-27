@@ -10,6 +10,7 @@ import Platforms from "./pages/Platforms";
 import FocusAreas from "./pages/FocusAreas";
 import ColorPalette from "./pages/ColorPalette";
 import Results from "./pages/Results";
+import AgencySetup from "./pages/AgencySetup";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/focus-areas" element={<FocusAreas />} />
           <Route path="/color-palette" element={<ColorPalette />} />
           <Route path="/results" element={<Results />} />
+          <Route path="/agency-setup" element={<AgencySetup />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
