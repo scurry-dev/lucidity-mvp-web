@@ -36,10 +36,10 @@ const Results = () => {
   ];
 
   const platformData = [
-    { platform: "Google Ads", value: 45, color: "#4285F4" },
-    { platform: "Meta Ads", value: 30, color: "#1877F2" },
-    { platform: "TikTok", value: 15, color: "#FF0050" },
-    { platform: "LinkedIn", value: 10, color: "#0A66C2" }
+    { platform: "Google Ads", value: 45, color: "hsl(171, 70%, 60%)" },
+    { platform: "Meta Ads", value: 30, color: "hsl(171, 50%, 45%)" },
+    { platform: "TikTok", value: 15, color: "hsl(171, 40%, 35%)" },
+    { platform: "LinkedIn", value: 10, color: "hsl(171, 30%, 25%)" }
   ];
 
   const insights = [
@@ -111,7 +111,7 @@ const Results = () => {
             <CardContent>
               <div className="text-2xl font-bold">91,100</div>
               <p className="text-xs text-muted-foreground">
-                <span className="text-green-600 flex items-center gap-1">
+                <span className="text-primary flex items-center gap-1">
                   <TrendingUp className="h-3 w-3" />
                   +12.3%
                 </span>
@@ -128,7 +128,7 @@ const Results = () => {
             <CardContent>
               <div className="text-2xl font-bold">9,880</div>
               <p className="text-xs text-muted-foreground">
-                <span className="text-green-600 flex items-center gap-1">
+                <span className="text-primary flex items-center gap-1">
                   <TrendingUp className="h-3 w-3" />
                   +8.7%
                 </span>
@@ -162,7 +162,7 @@ const Results = () => {
             <CardContent>
               <div className="text-2xl font-bold">$6.15</div>
               <p className="text-xs text-muted-foreground">
-                <span className="text-green-600 flex items-center gap-1">
+                <span className="text-primary flex items-center gap-1">
                   <TrendingDown className="h-3 w-3" />
                   -3.1%
                 </span>
@@ -188,14 +188,14 @@ const Results = () => {
                   <Line 
                     type="monotone" 
                     dataKey="clicks" 
-                    stroke="#14b8a6" 
+                    stroke="hsl(171, 70%, 60%)" 
                     strokeWidth={2}
                     name="Clicks"
                   />
                   <Line 
                     type="monotone" 
                     dataKey="conversions" 
-                    stroke="#8b5cf6" 
+                    stroke="hsl(171, 50%, 45%)" 
                     strokeWidth={2}
                     name="Conversions"
                   />
