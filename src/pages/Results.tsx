@@ -36,10 +36,10 @@ const Results = () => {
   ];
 
   const platformData = [
-    { platform: "Google Ads", value: 45, color: "hsl(171, 70%, 60%)" },
-    { platform: "Meta Ads", value: 30, color: "hsl(171, 50%, 45%)" },
-    { platform: "TikTok", value: 15, color: "hsl(171, 40%, 35%)" },
-    { platform: "LinkedIn", value: 10, color: "hsl(171, 30%, 25%)" }
+    { platform: "Google Ads", value: 45, color: "#3B82F6" },
+    { platform: "Meta Ads", value: 30, color: "#8B5CF6" },
+    { platform: "TikTok", value: 15, color: "#EF4444" },
+    { platform: "LinkedIn", value: 10, color: "#10B981" }
   ];
 
   const insights = [
@@ -188,15 +188,15 @@ const Results = () => {
                   <Line 
                     type="monotone" 
                     dataKey="clicks" 
-                    stroke="hsl(171, 70%, 60%)" 
-                    strokeWidth={2}
+                    stroke="#3B82F6" 
+                    strokeWidth={3}
                     name="Clicks"
                   />
                   <Line 
                     type="monotone" 
                     dataKey="conversions" 
-                    stroke="hsl(171, 50%, 45%)" 
-                    strokeWidth={2}
+                    stroke="#8B5CF6" 
+                    strokeWidth={3}
                     name="Conversions"
                   />
                 </LineChart>

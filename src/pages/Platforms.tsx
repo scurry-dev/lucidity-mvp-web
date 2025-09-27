@@ -4,6 +4,14 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ArrowLeft, ArrowRight, Globe } from "lucide-react";
 import logo from "@/assets/logo.png";
+import googleAdsIcon from "@/assets/google-ads-icon.png";
+import metaIcon from "@/assets/meta-icon.png";
+import tiktokIcon from "@/assets/tiktok-icon.png";
+import linkedinIcon from "@/assets/linkedin-icon.png";
+import xIcon from "@/assets/x-icon.png";
+import pinterestIcon from "@/assets/pinterest-icon.png";
+import snapchatIcon from "@/assets/snapchat-icon.png";
+import youtubeIcon from "@/assets/youtube-icon.png";
 import { useNavigate } from "react-router-dom";
 
 const Platforms = () => {
@@ -15,56 +23,56 @@ const Platforms = () => {
       id: "google-ads",
       name: "Google Ads",
       description: "Search, Display, YouTube, and Shopping campaigns",
-      icon: "🔍",
+      logo: googleAdsIcon,
       popular: true,
     },
     {
       id: "meta-ads",
       name: "Meta Ads",
       description: "Facebook and Instagram advertising",
-      icon: "📘",
+      logo: metaIcon,
       popular: true,
     },
     {
       id: "tiktok-ads",
       name: "TikTok Ads",
       description: "Short-form video advertising",
-      icon: "🎵",
+      logo: tiktokIcon,
       popular: true,
     },
     {
       id: "linkedin-ads",
       name: "LinkedIn Ads",
       description: "Professional network advertising",
-      icon: "💼",
+      logo: linkedinIcon,
       popular: false,
     },
     {
       id: "twitter-ads",
       name: "X (Twitter) Ads",
       description: "Social media advertising",
-      icon: "🐦",
+      logo: xIcon,
       popular: false,
     },
     {
       id: "pinterest-ads",
       name: "Pinterest Ads",
       description: "Visual discovery advertising",
-      icon: "📌",
+      logo: pinterestIcon,
       popular: false,
     },
     {
       id: "snapchat-ads",
       name: "Snapchat Ads",
       description: "Multimedia messaging advertising",
-      icon: "👻",
+      logo: snapchatIcon,
       popular: false,
     },
     {
       id: "youtube-ads",
       name: "YouTube Ads",
       description: "Video advertising platform",
-      icon: "📺",
+      logo: youtubeIcon,
       popular: false,
     },
   ];
@@ -136,7 +144,7 @@ const Platforms = () => {
               <CardHeader className="pb-3">
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
-                    <span className="text-2xl">{platform.icon}</span>
+                    <img src={platform.logo} alt={platform.name} className="w-8 h-8" />
                     <div>
                       <CardTitle className="text-lg flex items-center gap-2">
                         {platform.name}
