@@ -55,6 +55,13 @@ All colors MUST be HSL.
     --sidebar-border: 220 13% 91%;
 
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Chart colors using primary brand teal */
+    --chart-1: 171 70% 60%;
+    --chart-2: 171 50% 70%;
+    --chart-3: 171 60% 50%;
+    --chart-4: 171 40% 80%;
+    --chart-5: 171 80% 40%;
   }
 
   .dark {
