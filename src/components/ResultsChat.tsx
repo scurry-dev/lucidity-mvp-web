@@ -100,7 +100,7 @@ const ResultsChat = ({ onInsertReference }: ResultsChatProps) => {
                 key={index}
                 variant="outline"
                 size="sm"
-                className="justify-start text-left h-auto py-2 px-3"
+                className="w-full justify-start text-left h-auto py-2 px-3 whitespace-normal break-words"
                 onClick={() => {
                   setChatInput(action);
                   onInsertReference(action);
@@ -120,7 +120,7 @@ const ResultsChat = ({ onInsertReference }: ResultsChatProps) => {
               className={`flex ${message.isUser ? 'justify-end' : 'justify-start'}`}
             >
               <div
-                className={`max-w-[80%] rounded-lg p-3 relative group ${
+                className={`max-w-[80%] rounded-lg p-3 relative group break-words ${
                   message.isUser
                     ? 'bg-primary text-primary-foreground'
                     : 'bg-muted'
