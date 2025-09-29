@@ -36,13 +36,13 @@ const Dashboard = () => {
       <header className="border-b bg-card px-6 py-4">
         <div className="flex items-center justify-between max-w-7xl mx-auto">
           <div className="flex items-center gap-3">
-            <img src={logo} alt="Lucidity" className="h-8" />
-            <h1 className="text-2xl font-bold text-foreground">Ad Report Generator</h1>
+            <img src={logo} alt="Lucidity" className="h-8 aspect-square object-contain" />
+            <h1 className="text-2xl font-bold text-foreground hidden md:block">Ad Report Generator</h1>
           </div>
           <div className="flex gap-3">
             <Button onClick={() => navigate("/agency-setup")} variant="outline" className="flex items-center gap-2">
               <Settings className="h-4 w-4" />
-              Agency Setup
+              Setup
             </Button>
             <Button onClick={() => navigate("/setup")} className="flex items-center gap-2">
               <Plus className="h-4 w-4" />
