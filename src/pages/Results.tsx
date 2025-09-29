@@ -68,29 +68,31 @@ const Results = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="border-b bg-card px-6 py-4">
-        <div className="flex items-center justify-between max-w-7xl mx-auto">
-          <div className="flex items-center gap-3">
+      <header className="border-b bg-card px-4 py-3">
+        <div className="flex items-center justify-between max-w-7xl mx-auto min-w-0">
+          <div className="flex items-center gap-2 min-w-0 flex-1">
             <Button
               variant="ghost"
               size="sm"
               onClick={() => navigate("/")}
-              className="flex items-center gap-2"
+              className="flex items-center gap-1 px-2 flex-shrink-0"
             >
               <ArrowLeft className="h-4 w-4" />
-              Dashboard
+              <span className="hidden sm:inline">Dashboard</span>
             </Button>
-            <img src={logo} alt="Lucidity" className="h-6" />
-            <span className="text-lg font-semibold">TechStart Inc - H1 2024 Report</span>
+            <img src={logo} alt="Lucidity" className="h-6 w-auto object-contain flex-shrink-0" />
+            <span className="text-lg font-semibold truncate hidden md:inline">TechStart Inc - H1 2024 Report</span>
+            <span className="text-sm font-semibold truncate md:hidden">TechStart Report</span>
           </div>
-          <div className="flex gap-3">
-            <Button variant="outline" className="flex items-center gap-2">
+          <div className="flex gap-2 flex-shrink-0">
+            <Button variant="outline" size="sm" className="flex items-center gap-1 px-2">
               <Share2 className="h-4 w-4" />
-              Share
+              <span className="hidden sm:inline">Share</span>
             </Button>
-            <Button className="flex items-center gap-2">
+            <Button size="sm" className="flex items-center gap-1 px-2">
               <Download className="h-4 w-4" />
-              Export PDF
+              <span className="hidden sm:inline">Export PDF</span>
+              <span className="sm:hidden">PDF</span>
             </Button>
           </div>
         </div>
