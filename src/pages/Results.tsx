@@ -35,10 +35,10 @@ const Results = () => {
   ];
 
   const platformData = [
-    { platform: "Google Ads", value: 45, color: "#60A5FA" },
-    { platform: "Meta Ads", value: 30, color: "#A78BFA" },
-    { platform: "TikTok", value: 15, color: "#F87171" },
-    { platform: "LinkedIn", value: 10, color: "#6EE7B7" }
+    { platform: "Google Ads", conversions: 4450, color: "#60A5FA" },
+    { platform: "Meta Ads", conversions: 2964, color: "#A78BFA" },
+    { platform: "TikTok", conversions: 1482, color: "#F87171" },
+    { platform: "LinkedIn", conversions: 988, color: "#6EE7B7" }
   ];
 
   const insights = [
@@ -81,7 +81,7 @@ const Results = () => {
               Dashboard
             </Button>
             <img src={logo} alt="Lucidity" className="h-6" />
-            <span className="text-lg font-semibold">TechStart Inc - Q4 2024 Report</span>
+            <span className="text-lg font-semibold">TechStart Inc - H1 2024 Report</span>
           </div>
           <div className="flex gap-3">
             <Button variant="outline" className="flex items-center gap-2">
@@ -210,10 +210,10 @@ const Results = () => {
           </ReferencableItem>
 
           {/* Platform Distribution */}
-          <ReferencableItem id="chart-2" title="Platform Performance Distribution" type="chart" onReference={handleChatReference}>
+          <ReferencableItem id="chart-2" title="Conversions by Platform" type="chart" onReference={handleChatReference}>
             <Card>
             <CardHeader>
-              <CardTitle>Platform Performance Distribution</CardTitle>
+              <CardTitle>Conversions by Platform</CardTitle>
             </CardHeader>
             <CardContent>
               <ResponsiveContainer width="100%" height={300}>
@@ -223,14 +223,41 @@ const Results = () => {
                     cx="50%"
                     cy="50%"
                     outerRadius={80}
-                    dataKey="value"
-                    label={({ platform, value }) => `${platform}: ${value}%`}
+                    dataKey="conversions"
+                    label={({ platform, conversions }) => {
+                      const total = platformData.reduce((sum, item) => sum + item.conversions, 0);
+                      const percentage = ((conversions / total) * 100).toFixed(1);
+                      return `${platform}: ${percentage}%`;
+                    }}
                   >
                     {platformData.map((entry, index) => (
                       <Cell key={`cell-${index}`} fill={entry.color} />
                     ))}
                   </Pie>
-                  <Tooltip />
+                  <Tooltip
+                    content={({ active, payload }) => {
+                      if (active && payload && payload[0]) {
+                        const data = payload[0].payload;
+                        const total = platformData.reduce((sum, item) => sum + item.conversions, 0);
+                        const percentage = ((data.conversions / total) * 100).toFixed(1);
+                        return (
+                          <div className="bg-background border border-border rounded-lg p-3 shadow-lg">
+                            <div className="flex items-center gap-2 mb-1">
+                              <div 
+                                className="w-3 h-3 rounded-full" 
+                                style={{ backgroundColor: data.color }}
+                              />
+                              <span className="font-medium">{data.platform}</span>
+                            </div>
+                            <div className="text-sm text-muted-foreground">
+                              {data.conversions.toLocaleString()} conversions ({percentage}%)
+                            </div>
+                          </div>
+                        );
+                      }
+                      return null;
+                    }}
+                  />
                 </PieChart>
               </ResponsiveContainer>
             </CardContent>
