@@ -10,8 +10,9 @@ import {
   CartesianGrid, 
   Tooltip, 
   ResponsiveContainer,
-  BarChart,
-  Bar
+  PieChart,
+  Pie,
+  Cell
 } from "recharts";
 import { ArrowLeft, Download, Share2, TrendingUp, TrendingDown, DollarSign, MousePointer } from "lucide-react";
 import logo from "@/assets/logo.png";
@@ -216,15 +217,21 @@ const Results = () => {
             </CardHeader>
             <CardContent>
               <ResponsiveContainer width="100%" height={300}>
-                <BarChart data={platformData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" strokeOpacity={0.5} />
-                  <XAxis dataKey="platform" />
-                  <YAxis 
-                    label={{ value: 'Conversion Rate (%)', angle: -90, position: 'insideLeft' }}
-                    domain={[0, 15]}
-                  />
+                <PieChart>
+                  <Pie
+                    data={platformData}
+                    cx="50%"
+                    cy="50%"
+                    outerRadius={80}
+                    dataKey="rate"
+                    label={({ platform, rate }) => `${platform}: ${rate}%`}
+                  >
+                    {platformData.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={entry.color} />
+                    ))}
+                  </Pie>
                   <Tooltip
-                    content={({ active, payload, label }) => {
+                    content={({ active, payload }) => {
                       if (active && payload && payload[0]) {
                         const data = payload[0].payload;
                         return (
@@ -234,7 +241,7 @@ const Results = () => {
                                 className="w-3 h-3 rounded-full" 
                                 style={{ backgroundColor: data.color }}
                               />
-                              <span className="font-medium">{label}</span>
+                              <span className="font-medium">{data.platform}</span>
                             </div>
                             <div className="text-sm text-muted-foreground">
                               Conversion Rate: {data.rate}%
@@ -248,14 +255,7 @@ const Results = () => {
                       return null;
                     }}
                   />
-                  <Bar 
-                    dataKey="rate" 
-                    fill="#60A5FA"
-                    stroke="#60A5FA"
-                    strokeWidth={1}
-                    radius={[4, 4, 0, 0]}
-                  />
-                </BarChart>
+                </PieChart>
               </ResponsiveContainer>
             </CardContent>
             </Card>
