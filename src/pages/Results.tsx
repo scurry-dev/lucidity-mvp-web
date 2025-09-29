@@ -35,10 +35,10 @@ const Results = () => {
   ];
 
   const platformData = [
-    { platform: "Google Ads", conversions: 4450, color: "#60A5FA" },
-    { platform: "Meta Ads", conversions: 2964, color: "#A78BFA" },
-    { platform: "TikTok", conversions: 1482, color: "#F87171" },
-    { platform: "LinkedIn", conversions: 988, color: "#6EE7B7" }
+    { platform: "Google Ads", conversions: 4450, clicks: 35200, rate: 12.6, color: "#60A5FA" },
+    { platform: "Meta Ads", conversions: 2964, clicks: 28600, rate: 10.4, color: "#A78BFA" },
+    { platform: "TikTok", conversions: 1482, clicks: 18500, rate: 8.0, color: "#F87171" },
+    { platform: "LinkedIn", conversions: 988, clicks: 8800, rate: 11.2, color: "#6EE7B7" }
   ];
 
   const insights = [
@@ -210,10 +210,10 @@ const Results = () => {
           </ReferencableItem>
 
           {/* Platform Distribution */}
-          <ReferencableItem id="chart-2" title="Conversions by Platform" type="chart" onReference={handleChatReference}>
+          <ReferencableItem id="chart-2" title="Conversion Rates by Platform" type="chart" onReference={handleChatReference}>
             <Card>
             <CardHeader>
-              <CardTitle>Conversions by Platform</CardTitle>
+              <CardTitle>Conversion Rates by Platform</CardTitle>
             </CardHeader>
             <CardContent>
               <ResponsiveContainer width="100%" height={300}>
@@ -223,12 +223,8 @@ const Results = () => {
                     cx="50%"
                     cy="50%"
                     outerRadius={80}
-                    dataKey="conversions"
-                    label={({ platform, conversions }) => {
-                      const total = platformData.reduce((sum, item) => sum + item.conversions, 0);
-                      const percentage = ((conversions / total) * 100).toFixed(1);
-                      return `${platform}: ${percentage}%`;
-                    }}
+                    dataKey="rate"
+                    label={({ platform, rate }) => `${platform}: ${rate}%`}
                   >
                     {platformData.map((entry, index) => (
                       <Cell key={`cell-${index}`} fill={entry.color} />
@@ -238,8 +234,6 @@ const Results = () => {
                     content={({ active, payload }) => {
                       if (active && payload && payload[0]) {
                         const data = payload[0].payload;
-                        const total = platformData.reduce((sum, item) => sum + item.conversions, 0);
-                        const percentage = ((data.conversions / total) * 100).toFixed(1);
                         return (
                           <div className="bg-background border border-border rounded-lg p-3 shadow-lg">
                             <div className="flex items-center gap-2 mb-1">
@@ -250,7 +244,10 @@ const Results = () => {
                               <span className="font-medium">{data.platform}</span>
                             </div>
                             <div className="text-sm text-muted-foreground">
-                              {data.conversions.toLocaleString()} conversions ({percentage}%)
+                              Conversion Rate: {data.rate}%
+                            </div>
+                            <div className="text-sm text-muted-foreground">
+                              {data.conversions.toLocaleString()} conversions from {data.clicks.toLocaleString()} clicks
                             </div>
                           </div>
                         );
