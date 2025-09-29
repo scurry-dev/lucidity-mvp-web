@@ -36,10 +36,9 @@ const Dashboard = () => {
       <header className="border-b bg-card px-4 sm:px-6 py-4">
         <div className="flex items-center justify-between max-w-7xl mx-auto">
           <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
-            <img src={logo} alt="Lucidity" className="h-8 w-8 flex-shrink-0 object-contain" />
+            <img src={logo} alt="Lucidity" className="h-10 w-10 flex-shrink-0 object-contain" />
             <h1 className="text-lg sm:text-2xl font-bold text-foreground truncate">
               <span className="hidden sm:inline">Ad Report Generator</span>
-              <span className="sm:hidden">Lucidity</span>
             </h1>
           </div>
           <div className="flex gap-2 sm:gap-3 flex-shrink-0">
