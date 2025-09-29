@@ -77,24 +77,26 @@ const AgencySetup = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="border-b bg-card px-6 py-4">
+      <header className="border-b bg-card px-4 py-3">
         <div className="flex items-center justify-between max-w-7xl mx-auto">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 min-w-0 flex-1">
             <Button
               variant="ghost"
               size="sm"
               onClick={() => navigate("/")}
-              className="flex items-center gap-2"
+              className="flex items-center gap-1 px-2"
             >
               <ArrowLeft className="h-4 w-4" />
-              Dashboard
+              <span className="hidden sm:inline">Dashboard</span>
             </Button>
-            <img src={logo} alt="Lucidity" className="h-6" />
-            <span className="text-lg font-semibold">Agency Setup</span>
+            <img src={logo} alt="Lucidity" className="h-6 w-auto object-contain flex-shrink-0" />
+            <span className="text-lg font-semibold truncate hidden sm:inline">Agency Setup</span>
+            <span className="text-sm font-semibold truncate sm:hidden">Setup</span>
           </div>
-          <Badge variant="outline" className="flex items-center gap-2">
+          <Badge variant="outline" className="flex items-center gap-1 px-2 py-1 text-xs flex-shrink-0">
             <Settings className="h-3 w-3" />
-            Configuration
+            <span className="hidden sm:inline">Configuration</span>
+            <span className="sm:hidden">Config</span>
           </Badge>
         </div>
       </header>
