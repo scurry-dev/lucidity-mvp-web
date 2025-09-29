@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { MessageSquare, Send, Copy, Check } from "lucide-react";
@@ -83,15 +82,15 @@ const ResultsChat = ({ onInsertReference }: ResultsChatProps) => {
   ];
 
   return (
-    <div className="h-full flex flex-col">
-      <CardHeader className="pb-4">
-        <CardTitle className="flex items-center gap-2 text-lg">
+    <div className="h-full flex flex-col p-6">
+      <div className="pb-4">
+        <h3 className="flex items-center gap-2 text-lg font-semibold">
           <MessageSquare className="h-5 w-5" />
           AI Report Assistant
-        </CardTitle>
-      </CardHeader>
+        </h3>
+      </div>
       
-      <CardContent className="flex-1 flex flex-col space-y-4">
+      <div className="flex-1 flex flex-col space-y-4">
         {/* Quick Actions */}
         <div className="space-y-2">
           <p className="text-sm font-medium text-muted-foreground">Quick Questions:</p>
@@ -157,7 +156,7 @@ const ResultsChat = ({ onInsertReference }: ResultsChatProps) => {
             <Send className="h-4 w-4" />
           </Button>
         </div>
-      </CardContent>
+      </div>
     </div>
   );
 };
