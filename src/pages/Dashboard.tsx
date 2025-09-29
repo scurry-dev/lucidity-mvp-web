@@ -33,33 +33,20 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="border-b bg-card px-4 sm:px-6 py-4">
+      <header className="border-b bg-card px-6 py-4">
         <div className="flex items-center justify-between max-w-7xl mx-auto">
-          <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
-            <img src={logo} alt="Lucidity" className="h-10 w-10 flex-shrink-0 object-contain" />
-            <h1 className="text-lg sm:text-2xl font-bold text-foreground truncate">
-              <span className="hidden sm:inline">Ad Report Generator</span>
-            </h1>
+          <div className="flex items-center gap-3">
+            <img src={logo} alt="Lucidity" className="h-8" />
+            <h1 className="text-2xl font-bold text-foreground">Ad Report Generator</h1>
           </div>
-          <div className="flex gap-2 sm:gap-3 flex-shrink-0">
-            <Button 
-              onClick={() => navigate("/agency-setup")} 
-              variant="outline" 
-              size="sm"
-              className="flex items-center gap-1 sm:gap-2"
-            >
+          <div className="flex gap-3">
+            <Button onClick={() => navigate("/agency-setup")} variant="outline" className="flex items-center gap-2">
               <Settings className="h-4 w-4" />
-              <span className="hidden xs:inline sm:inline">Agency Setup</span>
-              <span className="xs:hidden sm:hidden">Setup</span>
+              Agency Setup
             </Button>
-            <Button 
-              onClick={() => navigate("/setup")} 
-              size="sm"
-              className="flex items-center gap-1 sm:gap-2"
-            >
+            <Button onClick={() => navigate("/setup")} className="flex items-center gap-2">
               <Plus className="h-4 w-4" />
-              <span className="hidden xs:inline">New Report</span>
-              <span className="xs:hidden">New</span>
+              New Report
             </Button>
           </div>
         </div>
