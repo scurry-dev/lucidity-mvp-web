@@ -226,7 +226,24 @@ const Results = () => {
                     cy="50%"
                     outerRadius={80}
                     dataKey="rate"
-                    label={({ platform, rate }) => `${platform}: ${rate}%`}
+                    label={({ cx, cy, midAngle, outerRadius, rate, fill }) => {
+                      const RADIAN = Math.PI / 180;
+                      const radius = outerRadius + 25;
+                      const x = cx + radius * Math.cos(-midAngle * RADIAN);
+                      const y = cy + radius * Math.sin(-midAngle * RADIAN);
+                      return (
+                        <text 
+                          x={x} 
+                          y={y} 
+                          fill={fill}
+                          textAnchor={x > cx ? 'start' : 'end'} 
+                          dominantBaseline="central"
+                          className="text-xs font-medium"
+                        >
+                          {`${rate}%`}
+                        </text>
+                      );
+                    }}
                   >
                     {platformData.map((entry, index) => (
                       <Cell key={`cell-${index}`} fill={entry.color} />
@@ -259,6 +276,17 @@ const Results = () => {
                   />
                 </PieChart>
               </ResponsiveContainer>
+              <div className="mt-4 grid grid-cols-2 gap-2">
+                {platformData.map((item, index) => (
+                  <div key={index} className="flex items-center gap-2">
+                    <div 
+                      className="w-3 h-3 rounded-full flex-shrink-0" 
+                      style={{ backgroundColor: item.color }}
+                    />
+                    <span className="text-sm">{item.platform}</span>
+                  </div>
+                ))}
+              </div>
             </CardContent>
             </Card>
           </ReferencableItem>
