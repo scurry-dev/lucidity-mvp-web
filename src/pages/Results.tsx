@@ -12,7 +12,9 @@ import {
   ResponsiveContainer,
   PieChart,
   Pie,
-  Cell
+  Cell,
+  BarChart,
+  Bar
 } from "recharts";
 import { ArrowLeft, Download, Share2, TrendingUp, TrendingDown, DollarSign, MousePointer } from "lucide-react";
 import logo from "@/assets/logo.png";
@@ -23,6 +25,7 @@ import ReferencableItem from "@/components/ReferencableItem";
 const Results = () => {
   const navigate = useNavigate();
   const [chatReference, setChatReference] = useState("");
+  const [chart2Type, setChart2Type] = useState<"pie" | "bar">("pie");
 
   // Mock data for charts
   const performanceData = [
@@ -219,7 +222,8 @@ const Results = () => {
             </CardHeader>
             <CardContent className="flex-1 flex flex-col">
               <ResponsiveContainer width="100%" height={300}>
-                <PieChart>
+                {chart2Type === "pie" ? (
+                  <PieChart>
                   <Pie
                     data={platformData}
                     cx="50%"
@@ -275,6 +279,43 @@ const Results = () => {
                     }}
                   />
                 </PieChart>
+                ) : (
+                  <BarChart data={platformData}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" strokeOpacity={0.5} />
+                    <XAxis dataKey="platform" />
+                    <YAxis />
+                    <Tooltip
+                      content={({ active, payload }) => {
+                        if (active && payload && payload[0]) {
+                          const data = payload[0].payload;
+                          return (
+                            <div className="bg-background border border-border rounded-lg p-3 shadow-lg">
+                              <div className="flex items-center gap-2 mb-1">
+                                <div 
+                                  className="w-3 h-3 rounded-full" 
+                                  style={{ backgroundColor: data.color }}
+                                />
+                                <span className="font-medium">{data.platform}</span>
+                              </div>
+                              <div className="text-sm text-muted-foreground">
+                                Conversion Rate: {data.rate}%
+                              </div>
+                              <div className="text-sm text-muted-foreground">
+                                {data.conversions.toLocaleString()} conversions from {data.clicks.toLocaleString()} clicks
+                              </div>
+                            </div>
+                          );
+                        }
+                        return null;
+                      }}
+                    />
+                    <Bar dataKey="rate">
+                      {platformData.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={entry.color} />
+                      ))}
+                    </Bar>
+                  </BarChart>
+                )}
               </ResponsiveContainer>
               <div className="mt-4 grid grid-cols-2 gap-2">
                 {platformData.map((item, index) => (
@@ -336,7 +377,7 @@ const Results = () => {
           {/* AI Chat Sidebar */}
           <div className="lg:col-span-1">
             <Card className="sticky top-6 h-fit">
-              <ResultsChat onInsertReference={handleChatReference} />
+              <ResultsChat onInsertReference={handleChatReference} onChangeChart2Type={setChart2Type} />
             </Card>
           </div>
         </div>

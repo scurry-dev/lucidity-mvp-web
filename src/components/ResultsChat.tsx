@@ -13,9 +13,10 @@ interface Message {
 
 interface ResultsChatProps {
   onInsertReference: (text: string) => void;
+  onChangeChart2Type: (type: "pie" | "bar") => void;
 }
 
-const ResultsChat = ({ onInsertReference }: ResultsChatProps) => {
+const ResultsChat = ({ onInsertReference, onChangeChart2Type }: ResultsChatProps) => {
   const [chatInput, setChatInput] = useState("");
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -38,6 +39,11 @@ const ResultsChat = ({ onInsertReference }: ResultsChatProps) => {
       
       setMessages(prev => [...prev, userMessage]);
       
+      // Check if user wants to change chart 2 to bar chart
+      if (chatInput.toLowerCase().includes("chart 2") && chatInput.toLowerCase().includes("bar chart")) {
+        onChangeChart2Type("bar");
+      }
+      
       // Simulate AI response
       setTimeout(() => {
         const aiResponse: Message = {
@@ -54,6 +60,9 @@ const ResultsChat = ({ onInsertReference }: ResultsChatProps) => {
   };
 
   const generateAIResponse = (input: string) => {
+    if (input.toLowerCase().includes("chart 2") && input.toLowerCase().includes("bar chart")) {
+      return "I've changed Chart 2 to a bar chart for you. The bar chart format makes it easier to compare conversion rates across platforms side by side.";
+    }
     if (input.toLowerCase().includes("roi") || input.toLowerCase().includes("return")) {
       return "Based on your current data, Google Ads is showing the best ROI at 2.3x, followed by LinkedIn at 1.8x. I recommend increasing budget allocation to Google Ads campaigns by 20%.";
     }
