@@ -12,6 +12,7 @@ import ColorPalette from "./pages/ColorPalette";
 import Results from "./pages/Results";
 import AgencySetup from "./pages/AgencySetup";
 import NotFound from "./pages/NotFound";
+import AnalyticsTracker from "./components/AnalyticsTracker";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <AnalyticsTracker />
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/welcome" element={<Index />} />
