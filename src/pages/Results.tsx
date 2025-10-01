@@ -217,16 +217,33 @@ const Results = () => {
             <CardHeader>
               <CardTitle>Conversion Rates by Platform</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="px-2 sm:px-6">
               <ResponsiveContainer width="100%" height={300}>
-                <PieChart>
+                <PieChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
                   <Pie
                     data={platformData}
                     cx="50%"
                     cy="50%"
-                    outerRadius={80}
+                    outerRadius={60}
                     dataKey="rate"
-                    label={({ platform, rate }) => `${platform}: ${rate}%`}
+                    label={({ cx, cy, midAngle, outerRadius, rate }) => {
+                      const RADIAN = Math.PI / 180;
+                      const radius = outerRadius + 25;
+                      const x = cx + radius * Math.cos(-midAngle * RADIAN);
+                      const y = cy + radius * Math.sin(-midAngle * RADIAN);
+                      return (
+                        <text 
+                          x={x} 
+                          y={y} 
+                          fill="currentColor" 
+                          textAnchor={x > cx ? 'start' : 'end'} 
+                          dominantBaseline="central"
+                          className="text-xs font-medium"
+                        >
+                          {`${rate}%`}
+                        </text>
+                      );
+                    }}
                   >
                     {platformData.map((entry, index) => (
                       <Cell key={`cell-${index}`} fill={entry.color} />
@@ -237,7 +254,7 @@ const Results = () => {
                       if (active && payload && payload[0]) {
                         const data = payload[0].payload;
                         return (
-                          <div className="bg-background border border-border rounded-lg p-3 shadow-lg">
+                          <div className="bg-background border border-border rounded-lg p-3 shadow-lg z-50">
                             <div className="flex items-center gap-2 mb-1">
                               <div 
                                 className="w-3 h-3 rounded-full" 
@@ -259,6 +276,17 @@ const Results = () => {
                   />
                 </PieChart>
               </ResponsiveContainer>
+              <div className="mt-4 grid grid-cols-2 gap-2 text-sm">
+                {platformData.map((item, index) => (
+                  <div key={index} className="flex items-center gap-2">
+                    <div 
+                      className="w-3 h-3 rounded-full flex-shrink-0" 
+                      style={{ backgroundColor: item.color }}
+                    />
+                    <span className="truncate">{item.platform}</span>
+                  </div>
+                ))}
+              </div>
             </CardContent>
             </Card>
           </ReferencableItem>
