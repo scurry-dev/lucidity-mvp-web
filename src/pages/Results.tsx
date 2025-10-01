@@ -312,7 +312,7 @@ const Results = () => {
                     <div className="flex items-start gap-3">
                       <Badge 
                         variant={insight.type === "positive" ? "default" : "destructive"}
-                        className="mt-1"
+                        className="mt-1 w-28 justify-center"
                       >
                         {insight.type === "positive" ? "Opportunity" : "Alert"}
                       </Badge>
