@@ -77,7 +77,7 @@ const ResultsChat = ({ onInsertReference }: ResultsChatProps) => {
   const quickActions = [
     "Which platform has the best ROI?",
     "How can I improve my CTR?",
-    "Analyze Chart 1 performance trends",
+    "Turn chart 2 into a bar chart",
     "Explain Insight 2 recommendations"
   ];
 
