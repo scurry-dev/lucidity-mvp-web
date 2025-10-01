@@ -178,11 +178,11 @@ const Results = () => {
             <div className="grid lg:grid-cols-2 gap-6">
           {/* Performance Chart */}
           <ReferencableItem id="chart-1" title="Performance Trends" type="chart" onReference={handleChatReference}>
-            <Card>
+            <Card className="h-full flex flex-col">
             <CardHeader>
               <CardTitle>Performance Trends</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="flex-1">
               <ResponsiveContainer width="100%" height={300}>
                 <LineChart data={performanceData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" strokeOpacity={0.5} />
@@ -213,11 +213,11 @@ const Results = () => {
 
           {/* Platform Distribution */}
           <ReferencableItem id="chart-2" title="Conversion Rates by Platform" type="chart" onReference={handleChatReference}>
-            <Card>
+            <Card className="h-full flex flex-col">
             <CardHeader>
               <CardTitle>Conversion Rates by Platform</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="flex-1 flex flex-col">
               <ResponsiveContainer width="100%" height={300}>
                 <PieChart>
                   <Pie
