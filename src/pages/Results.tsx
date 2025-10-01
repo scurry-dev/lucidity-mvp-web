@@ -187,7 +187,7 @@ const Results = () => {
                 <LineChart data={performanceData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" strokeOpacity={0.5} />
                   <XAxis dataKey="month" />
-                  <YAxis />
+                  <YAxis tickFormatter={(value) => `${(value / 1000).toFixed(0)}k`} />
                   <Tooltip />
                   <Line 
                     type="monotone" 
