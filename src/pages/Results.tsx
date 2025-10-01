@@ -232,11 +232,11 @@ const Results = () => {
                       const x = cx + radius * Math.cos(-midAngle * RADIAN);
                       const y = cy + radius * Math.sin(-midAngle * RADIAN);
                       return (
-                        <text
-                          x={x}
-                          y={y}
-                          fill="currentColor"
-                          textAnchor={x > cx ? 'start' : 'end'}
+                        <text 
+                          x={x} 
+                          y={y} 
+                          fill="currentColor" 
+                          textAnchor={x > cx ? 'start' : 'end'} 
                           dominantBaseline="central"
                           className="text-xs font-medium"
                         >
@@ -254,7 +254,7 @@ const Results = () => {
                       if (active && payload && payload[0]) {
                         const data = payload[0].payload;
                         return (
-                          <div className="bg-background border border-border rounded-lg p-3 shadow-lg">
+                          <div className="bg-background border border-border rounded-lg p-3 shadow-lg z-50">
                             <div className="flex items-center gap-2 mb-1">
                               <div 
                                 className="w-3 h-3 rounded-full" 
