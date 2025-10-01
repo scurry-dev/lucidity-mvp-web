@@ -225,11 +225,65 @@ const Results = () => {
                     cx="50%"
                     cy="50%"
                     outerRadius={80}
+                    innerRadius={0}
                     dataKey="rate"
-                    label={({ platform, rate }) => `${platform}: ${rate}%`}
+                    label={({ cx, cy, midAngle, outerRadius, platform }) => {
+                      const RADIAN = Math.PI / 180;
+                      const radius = outerRadius + 25;
+                      const x = cx + radius * Math.cos(-midAngle * RADIAN);
+                      const y = cy + radius * Math.sin(-midAngle * RADIAN);
+                      return (
+                        <text 
+                          x={x} 
+                          y={y} 
+                          fill="currentColor" 
+                          textAnchor={x > cx ? 'start' : 'end'} 
+                          dominantBaseline="central"
+                          className="text-xs font-medium"
+                        >
+                          {platform}
+                        </text>
+                      );
+                    }}
+                    labelLine={{
+                      stroke: 'currentColor',
+                      strokeWidth: 1
+                    }}
                   >
                     {platformData.map((entry, index) => (
                       <Cell key={`cell-${index}`} fill={entry.color} />
+                    ))}
+                  </Pie>
+                  <Pie
+                    data={platformData}
+                    cx="50%"
+                    cy="50%"
+                    outerRadius={80}
+                    dataKey="rate"
+                    label={({ cx, cy, midAngle, innerRadius, outerRadius, rate }) => {
+                      const RADIAN = Math.PI / 180;
+                      const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+                      const x = cx + radius * Math.cos(-midAngle * RADIAN);
+                      const y = cy + radius * Math.sin(-midAngle * RADIAN);
+                      return (
+                        <text 
+                          x={x} 
+                          y={y} 
+                          fill="white" 
+                          textAnchor="middle" 
+                          dominantBaseline="central"
+                          className="text-sm font-bold"
+                        >
+                          {`${rate}%`}
+                        </text>
+                      );
+                    }}
+                    labelLine={false}
+                    isAnimationActive={false}
+                    stroke="none"
+                  >
+                    {platformData.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill="transparent" />
                     ))}
                   </Pie>
                   <Tooltip
