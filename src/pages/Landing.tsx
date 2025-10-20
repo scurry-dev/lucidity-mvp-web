@@ -1,10 +1,33 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
 import { BarChart3, Palette, Target, Zap } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+import { useState } from "react";
 
 const Landing = () => {
   const navigate = useNavigate();
+  const { toast } = useToast();
+  const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSignUp = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    
+    setIsSubmitting(true);
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    toast({
+      title: "You're on the list!",
+      description: "We'll notify you when spots open up.",
+    });
+    
+    setEmail("");
+    setIsSubmitting(false);
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -78,6 +101,46 @@ const Landing = () => {
             <p className="text-muted-foreground">
               Automated insights and visualizations that make data easy to understand.
             </p>
+          </Card>
+        </div>
+      </section>
+
+      {/* Early Access Section */}
+      <section className="border-t bg-gradient-to-br from-primary/5 via-background to-primary/10 py-24">
+        <div className="container mx-auto px-4">
+          <Card className="mx-auto max-w-3xl border-primary/20 bg-card/50 backdrop-blur-sm">
+            <div className="p-8 md:p-12 text-center">
+              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
+                <Zap className="h-4 w-4" />
+                Limited Early Access
+              </div>
+              
+              <h2 className="mb-4 text-3xl font-bold md:text-4xl">
+                Join Our Early Adopters
+              </h2>
+              
+              <p className="mb-6 text-lg text-muted-foreground">
+                Lucidity is currently partnering with a few early adopters. Join the list to be the first to know when new spots open.
+              </p>
+              
+              <div className="mb-8 inline-block rounded-lg bg-primary/10 px-4 py-2 text-primary font-semibold">
+                🎉 Early sign-ups get 50% off the first three months
+              </div>
+              
+              <form onSubmit={handleSignUp} className="mx-auto flex max-w-md gap-3">
+                <Input
+                  type="email"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="flex-1"
+                />
+                <Button type="submit" size="lg" disabled={isSubmitting}>
+                  {isSubmitting ? "Joining..." : "Join Waitlist"}
+                </Button>
+              </form>
+            </div>
           </Card>
         </div>
       </section>
