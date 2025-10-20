@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { BarChart3, Palette, Target, Zap } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { waitlistSchema } from "@/lib/validations/waitlist";
 
 const Landing = () => {
   const navigate = useNavigate();
@@ -17,16 +19,53 @@ const Landing = () => {
     if (!email) return;
     
     setIsSubmitting(true);
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    toast({
-      title: "You're on the list!",
-      description: "We'll notify you when spots open up.",
-    });
-    
-    setEmail("");
-    setIsSubmitting(false);
+
+    try {
+      // Validate email
+      const validatedData = waitlistSchema.parse({ email });
+
+      // Insert into Supabase
+      const { error } = await supabase
+        .from('waitlist')
+        .insert([{ email: validatedData.email }]);
+
+      if (error) {
+        // Handle duplicate email error
+        if (error.code === '23505') {
+          toast({
+            title: "Already on the list!",
+            description: "This email is already registered. We'll notify you when spots open up.",
+          });
+        } else {
+          throw error;
+        }
+      } else {
+        toast({
+          title: "You're on the list!",
+          description: "We'll notify you when spots open up.",
+        });
+        setEmail("");
+      }
+    } catch (error) {
+      if (error instanceof Error && 'issues' in error) {
+        // Zod validation error
+        const zodError = error as any;
+        toast({
+          title: "Invalid email",
+          description: zodError.issues[0]?.message || "Please enter a valid email address.",
+          variant: "destructive",
+        });
+      } else {
+        // Network or other errors
+        toast({
+          title: "Something went wrong",
+          description: "Please try again later.",
+          variant: "destructive",
+        });
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
