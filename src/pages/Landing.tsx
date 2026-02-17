@@ -70,6 +70,19 @@ const Landing = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Navbar */}
+      <nav className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur-sm">
+        <div className="container mx-auto flex items-center justify-between px-4 py-3">
+          <span className="text-lg font-bold">Lucidity</span>
+          <a
+            href="https://app.lucidityanalytics.com/login"
+            className="text-sm font-medium text-primary hover:underline"
+          >
+            Log In
+          </a>
+        </div>
+      </nav>
+
       {/* Hero Section */}
       <section className="relative overflow-hidden border-b">
         <div className="container mx-auto px-4 py-24 md:py-32">
@@ -94,8 +107,8 @@ const Landing = () => {
               <Button size="lg" onClick={() => navigate("/dashboard")} className="text-lg">
                 Try Demo
               </Button>
-              <Button size="lg" variant="outline" onClick={() => navigate("/setup")} className="text-lg">
-                Get Started
+              <Button size="lg" variant="outline" asChild className="text-lg">
+                <a href="https://app.lucidityanalytics.com/login">Log In</a>
               </Button>
             </div>
           </div>
