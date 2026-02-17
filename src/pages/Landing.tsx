@@ -74,12 +74,9 @@ const Landing = () => {
       <nav className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur-sm">
         <div className="container mx-auto flex items-center justify-between px-4 py-3">
           <span className="text-lg font-bold">Lucidity</span>
-          <a
-            href="https://app.lucidityanalytics.com/login"
-            className="text-sm font-medium text-primary hover:underline"
-          >
-            Log In
-          </a>
+          <Button variant="outline" size="sm" asChild>
+            <a href="https://app.lucidityanalytics.com/login">Log In</a>
+          </Button>
         </div>
       </nav>
 
