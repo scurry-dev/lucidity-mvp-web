@@ -21,12 +21,12 @@ const steps = [
   {
     number: "01",
     title: "Connect Your Accounts",
-    description: "Securely authenticate and connect your Google Ads accounts using OAuth 2.0 — no passwords shared.",
+    description: "Securely authenticate and connect your ad platform accounts using OAuth 2.0 — no passwords shared.",
   },
   {
     number: "02",
     title: "We Sync Your Data",
-    description: "Lucidity automatically retrieves campaign, ad group, and ad-level data every 12 hours via the Google Ads API.",
+    description: "Lucidity automatically retrieves campaign, ad group, and ad-level data from your connected platforms via their respective APIs.",
   },
   {
     number: "03",
