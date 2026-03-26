@@ -122,7 +122,7 @@ const Landing = () => {
 
             <h1 className="mb-6 text-5xl font-bold tracking-tight md:text-6xl lg:text-7xl">
               Transform Your Ad Reports with{" "}
-              <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
                 Lucidity
               </span>
             </h1>
