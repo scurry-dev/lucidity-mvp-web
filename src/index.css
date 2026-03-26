@@ -9,34 +9,35 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --background: 0 0% 99%;
-    --foreground: 0 0% 10%;
+    --foreground: 220 20% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 10%;
+    --card-foreground: 220 20% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 10%;
+    --popover-foreground: 220 20% 15%;
 
-    /* Lucidity brand teal/turquoise as primary */
-    --primary: 171 70% 60%;
+    /* Lucidity brand teal #78dfd1 */
+    --primary: 170 53% 67%;
     --primary-foreground: 0 0% 100%;
 
-    /* Light teal variations */
-    --secondary: 171 30% 95%;
-    --secondary-foreground: 0 0% 10%;
+    /* Lucidity brand purple #A28CF3 */
+    --secondary: 253 81% 75%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 171 15% 96%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 216 30% 96%;
+    --muted-foreground: 220 10% 45%;
 
-    --accent: 171 50% 85%;
-    --accent-foreground: 0 0% 10%;
+    /* Lucidity brand blue #70A3F4 */
+    --accent: 216 85% 70%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 216 25% 90%;
+    --input: 216 25% 90%;
+    --ring: 170 53% 67%;
 
     --radius: 0.5rem;
 
