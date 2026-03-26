@@ -7,6 +7,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { waitlistSchema } from "@/lib/validations/waitlist";
+import logo from "@/assets/logo.png";
 
 const metrics = [
   { icon: Eye, label: "Impressions", description: "Total number of times your ads were shown to users." },
@@ -100,7 +101,10 @@ const Landing = () => {
       {/* Navbar */}
       <nav className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur-sm">
         <div className="container mx-auto flex items-center justify-between px-4 py-3">
-          <span className="text-lg font-bold">Lucidity</span>
+          <div className="flex items-center gap-2">
+            <img src={logo} alt="Lucidity" className="h-8 w-8" />
+            <span className="text-lg font-bold">Lucidity</span>
+          </div>
           <Button variant="outline" size="sm" asChild>
             <a href="https://app.lucidityanalytics.com/login">Log In</a>
           </Button>
