@@ -115,7 +115,7 @@ const Landing = () => {
       <section className="relative overflow-hidden border-b">
         <div className="container mx-auto px-4 py-24 md:py-32">
           <div className="mx-auto max-w-4xl text-center">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border bg-secondary/50 px-4 py-2 text-sm">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-sm font-medium text-foreground">
               <Zap className="h-4 w-4 text-primary" />
               <span>Professional Ad Reporting Made Simple</span>
             </div>
