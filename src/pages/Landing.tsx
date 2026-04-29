@@ -131,12 +131,9 @@ const Landing = () => {
               A reporting platform built for digital marketing agencies — analyze ad performance data and present it to clients with clarity and confidence.
             </p>
 
-            <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
+            <div className="flex justify-center">
               <Button size="lg" asChild className="text-lg">
                 <a href="https://app.lucidityanalytics.com/signup">Build Your First Report Free</a>
-              </Button>
-              <Button size="lg" variant="outline" asChild className="text-lg">
-                <a href="https://app.lucidityanalytics.com/login">Log In</a>
               </Button>
             </div>
           </div>
