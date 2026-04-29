@@ -132,8 +132,8 @@ const Landing = () => {
             </p>
 
             <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
-              <Button size="lg" onClick={() => navigate("/dashboard")} className="text-lg">
-                Try Demo
+              <Button size="lg" asChild className="text-lg">
+                <a href="https://app.lucidityanalytics.com/signup">Build Your First Report Free</a>
               </Button>
               <Button size="lg" variant="outline" asChild className="text-lg">
                 <a href="https://app.lucidityanalytics.com/login">Log In</a>
@@ -295,10 +295,10 @@ const Landing = () => {
         <div className="container mx-auto px-4 text-center">
           <h2 className="mb-4 text-3xl font-bold md:text-4xl">Ready to Get Started?</h2>
           <p className="mb-8 text-lg text-muted-foreground">
-            See how Lucidity can transform your client reporting today
+            Build your first report free — no credit card required.
           </p>
-          <Button size="lg" onClick={() => navigate("/dashboard")} className="text-lg">
-            View Demo Dashboard
+          <Button size="lg" asChild className="text-lg">
+            <a href="https://app.lucidityanalytics.com/signup">Build Your First Report Free</a>
           </Button>
         </div>
       </section>
