@@ -12,3 +12,11 @@ Allow: /
 
 User-agent: *
 Allow: /
+Disallow: /dashboard
+Disallow: /setup
+Disallow: /platforms
+Disallow: /focus-areas
+Disallow: /color-palette
+Disallow: /results
+Disallow: /agency-setup
+
