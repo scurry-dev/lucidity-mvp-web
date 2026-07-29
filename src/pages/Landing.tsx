@@ -151,26 +151,31 @@ const Landing = () => {
               </div>
             </div>
 
-            {/* Screenshot */}
-            <div className="overflow-x-auto p-2">
-              <img
-                src="/sample-report-hero.png"
-                alt={SHOT_ALT}
-                width={1600}
-                height={667}
-                className="block w-full min-w-[600px] rounded-lg"
-              />
+            {/* Scrollable full report */}
+            <div className="relative">
+              <div className="max-h-[580px] overflow-y-auto overflow-x-hidden p-2">
+                <img
+                  src="/sample-report-full.png"
+                  alt={SHOT_ALT}
+                  width={1600}
+                  height={1743}
+                  className="block w-full min-w-[600px] rounded-lg"
+                />
+              </div>
+              {/* Scroll hint */}
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[hsl(var(--card))] to-transparent" />
             </div>
           </figure>
 
-          <div className="relative mt-4">
+          <div className="relative mt-4 flex items-center gap-4 text-sm text-[hsl(var(--faint))]">
+            <span>Scroll the report to see the full output</span>
             <a
               href="/sample-report.html"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-sm font-medium text-primary underline-offset-4 hover:underline"
+              className="inline-flex items-center gap-1 font-medium text-primary underline-offset-4 hover:underline"
             >
-              View the full report <ArrowUpRight className="h-3.5 w-3.5" />
+              Open standalone <ArrowUpRight className="h-3.5 w-3.5" />
             </a>
           </div>
         </div>
@@ -222,8 +227,9 @@ const Landing = () => {
                 A report that explains itself
               </h2>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                The screenshot above is the actual output: a single page with headline metrics, platform
-                breakdown, campaign performance and a ranked action plan. No deck assembly required.
+                The report above is the actual output: a single page with headline metrics, platform breakdown,
+                campaign performance and a ranked action plan. Scroll it to see the full narrative. No deck
+                assembly required.
               </p>
               <div className="mt-6">
                 <a
