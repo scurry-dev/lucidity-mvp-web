@@ -88,7 +88,7 @@ const Landing = () => {
       <nav className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3.5">
           <div className="flex items-center gap-2.5">
-            <img src={logo} alt="Lucidity" className="h-7 w-7" />
+            <img src={logo.url} alt="Lucidity" className="h-7 w-7" />
             <span className="text-[15px] font-semibold tracking-tight">Lucidity</span>
           </div>
           <div className="flex items-center gap-2">
