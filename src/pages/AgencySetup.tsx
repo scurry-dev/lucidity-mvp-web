@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ArrowLeft, Settings, Plus, Trash2, CheckCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import logo from "@/assets/logo.png.asset.json";
+import logo from "@/assets/logo.png";
 
 // Import platform icons
 import googleAdsIcon from "@/assets/google-ads-icon.png";
@@ -89,7 +89,7 @@ const AgencySetup = () => {
               <ArrowLeft className="h-4 w-4" />
               <span className="hidden sm:inline">Dashboard</span>
             </Button>
-            <img src={logo.url} alt="Lucidity" className="h-6 w-auto object-contain flex-shrink-0" />
+            <img src={logo} alt="Lucidity" className="h-6 w-auto object-contain flex-shrink-0" />
             <span className="text-lg font-semibold truncate hidden sm:inline">Agency Setup</span>
             <span className="text-sm font-semibold truncate sm:hidden">Setup</span>
           </div>

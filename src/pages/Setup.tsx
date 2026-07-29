@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import logo from "@/assets/logo.png.asset.json";
+import logo from "@/assets/logo.png";
 import { useNavigate } from "react-router-dom";
 
 const Setup = () => {
@@ -41,7 +41,7 @@ const Setup = () => {
             <ArrowLeft className="h-4 w-4" />
             Back
           </Button>
-          <img src={logo.url} alt="Lucidity" className="h-6" />
+          <img src={logo} alt="Lucidity" className="h-6" />
           <span className="text-lg font-semibold">New Report Setup</span>
         </div>
       </header>
