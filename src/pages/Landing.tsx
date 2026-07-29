@@ -274,7 +274,7 @@ const Landing = () => {
                     }`}
                   >
                     <div className="flex items-baseline gap-3">
-                      <span className="w-24 shrink-0 text-xs uppercase tracking-[0.14em] text-[hsl(var(--faint))]">
+                      <span className="w-28 shrink-0 text-xs uppercase tracking-[0.14em] text-[hsl(var(--faint))]">
                         {p.category}
                       </span>
                       <span className="text-sm font-medium">{p.name}</span>
