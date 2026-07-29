@@ -128,7 +128,7 @@ const Landing = () => {
             </h1>
 
             <p className="mb-8 text-xl text-muted-foreground md:text-2xl">
-              A reporting platform built for digital marketing agencies — analyze ad performance data and present it to clients with clarity and confidence.
+              The reusable analysis layer for marketing data.
             </p>
 
             <div className="flex justify-center">
