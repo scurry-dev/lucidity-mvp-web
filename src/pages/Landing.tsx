@@ -227,8 +227,9 @@ const Landing = () => {
                 A report that explains itself
               </h2>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                The screenshot above is the actual output: a single page with headline metrics, platform
-                breakdown, campaign performance and a ranked action plan. No deck assembly required.
+                The report above is the actual output: a single page with headline metrics, platform breakdown,
+                campaign performance and a ranked action plan. Scroll it to see the full narrative. No deck
+                assembly required.
               </p>
               <div className="mt-6">
                 <a
