@@ -1,8 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Check, ArrowUpRight } from "lucide-react";
 import logo from "@/assets/logo.png";
-import heroShot from "@/assets/sample-report-hero.png.asset.json";
-import fullShot from "@/assets/sample-report-full.png.asset.json";
 
 const SIGNUP = "https://app.lucidityanalytics.com/signup";
 const CALL = "https://calendar.app.google/UJK9SbPPz1nxUbB36";
@@ -138,7 +136,7 @@ const Landing = () => {
         <div className="mx-auto max-w-6xl px-6 pb-16">
           <figure className="overflow-x-auto rounded-xl border border-border bg-[hsl(var(--card))] p-2">
             <img
-              src={heroShot.url}
+              src="/sample-report-hero.png"
               alt={SHOT_ALT}
               width={1600}
               height={667}
@@ -221,7 +219,7 @@ const Landing = () => {
             <figure className="min-w-0">
               <div className="max-h-[620px] overflow-auto rounded-xl border border-border bg-background p-2">
                 <img
-                  src={fullShot.url}
+                  src="/sample-report-full.png"
                   alt={SHOT_ALT}
                   width={1600}
                   height={1743}
