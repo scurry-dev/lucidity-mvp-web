@@ -133,17 +133,37 @@ const Landing = () => {
         </div>
 
         {/* Hero artifact */}
-        <div className="mx-auto max-w-6xl px-6 pb-16">
-          <figure className="overflow-x-auto rounded-xl border border-border bg-[hsl(var(--card))] p-2">
-            <img
-              src="/sample-report-hero.png"
-              alt={SHOT_ALT}
-              width={1600}
-              height={667}
-              className="block w-full min-w-[600px] rounded-lg"
-            />
+        <div className="relative mx-auto max-w-6xl px-6 pb-16">
+          {/* Ambient glow */}
+          <div className="absolute -left-20 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-primary/10 blur-[120px]" />
+          <div className="absolute -right-20 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-secondary/10 blur-[120px]" />
+
+          <figure className="relative overflow-hidden rounded-2xl border border-border bg-[hsl(var(--card))] shadow-2xl shadow-black/20">
+            {/* Browser chrome */}
+            <div className="flex items-center gap-3 border-b border-border bg-[hsl(var(--muted))] px-4 py-3">
+              <div className="flex gap-1.5">
+                <span className="h-2.5 w-2.5 rounded-full bg-red-500/80" />
+                <span className="h-2.5 w-2.5 rounded-full bg-yellow-500/80" />
+                <span className="h-2.5 w-2.5 rounded-full bg-green-500/80" />
+              </div>
+              <div className="mx-auto flex h-7 max-w-md flex-1 items-center justify-center rounded-md border border-border bg-[hsl(var(--background))] px-4 text-[11px] text-[hsl(var(--faint))]">
+                app.lucidityanalytics.com/report/acme-paid-media
+              </div>
+            </div>
+
+            {/* Screenshot */}
+            <div className="overflow-x-auto p-2">
+              <img
+                src="/sample-report-hero.png"
+                alt={SHOT_ALT}
+                width={1600}
+                height={667}
+                className="block w-full min-w-[600px] rounded-lg"
+              />
+            </div>
           </figure>
-          <div className="mt-3">
+
+          <div className="relative mt-4">
             <a
               href="/sample-report.html"
               target="_blank"
