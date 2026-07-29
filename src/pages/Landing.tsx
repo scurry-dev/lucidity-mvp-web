@@ -158,7 +158,8 @@ const Landing = () => {
                   src="/sample-report-full.png"
                   alt={SHOT_ALT}
                   width={1600}
-                  height={1743}
+                  height={3313}
+
                   className="block w-full min-w-[600px] rounded-lg"
                 />
               </div>
