@@ -45,13 +45,31 @@ const steps = [
 ];
 
 const platforms = [
-  { category: "Ads", name: "Meta", status: "Live" },
-  { category: "Ads", name: "Google Ads", status: "Live" },
-  { category: "Ads", name: "TikTok", status: "In development" },
-  { category: "Web", name: "GA4", status: "Live" },
-  { category: "E-commerce", name: "Shopify", status: "In build" },
-  { category: "CRM", name: "HubSpot", status: "In build" },
+  { category: "Ads", name: "Meta", status: "Live", icon: siMeta },
+  { category: "Ads", name: "Google Ads", status: "Live", icon: siGoogleads },
+  { category: "Ads", name: "TikTok", status: "In development", icon: siTiktok },
+  { category: "Web", name: "GA4", status: "Live", icon: siGoogleanalytics },
+  { category: "E-commerce", name: "Shopify", status: "In build", icon: siShopify },
+  { category: "CRM", name: "HubSpot", status: "In build", icon: siHubspot },
 ];
+
+const BrandMark = ({ icon }: { icon: { path: string; hex: string; title: string } }) => (
+  <span
+    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-border bg-[hsl(var(--raised))]"
+    style={{ boxShadow: `inset 0 0 0 1px #${icon.hex}22` }}
+  >
+    <svg
+      role="img"
+      aria-label={`${icon.title} logo`}
+      viewBox="0 0 24 24"
+      className="h-5 w-5"
+      fill={`#${icon.hex}`}
+    >
+      <path d={icon.path} />
+    </svg>
+  </span>
+);
+
 
 const audience = [
   "Solo to about 25 people, carrying ten to thirty client accounts",
