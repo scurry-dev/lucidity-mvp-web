@@ -106,3 +106,30 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
+
+/* Lucidity marketing page — scoped dark brand theme */
+.lucidity {
+  --background: 220 12% 13%;
+  --foreground: 220 17% 95%;
+  --card: 220 13% 17%;
+  --card-foreground: 220 17% 95%;
+  --popover: 220 13% 17%;
+  --popover-foreground: 220 17% 95%;
+  --primary: 171 59% 68%;
+  --primary-foreground: 220 12% 13%;
+  --secondary: 254 80% 75%;
+  --secondary-foreground: 220 12% 13%;
+  --muted: 219 13% 20%;
+  --muted-foreground: 214 9% 64%;
+  --accent: 217 87% 71%;
+  --accent-foreground: 220 12% 13%;
+  --border: 218 10% 25%;
+  --input: 218 10% 25%;
+  --ring: 171 59% 68%;
+  --raised: 219 13% 20%;
+  --faint: 214 8% 45%;
+  --radius: 0.625rem;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+}
