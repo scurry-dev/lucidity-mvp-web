@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ArrowLeft, ArrowRight, Globe } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.png.asset.json";
 import googleAdsIcon from "@/assets/google-ads-icon.png";
 import metaIcon from "@/assets/meta-icon.png";
 import tiktokIcon from "@/assets/tiktok-icon.png";
@@ -104,7 +104,7 @@ const Platforms = () => {
             <ArrowLeft className="h-4 w-4" />
             Back
           </Button>
-          <img src={logo} alt="Lucidity" className="h-6" />
+          <img src={logo.url} alt="Lucidity" className="h-6" />
           <span className="text-lg font-semibold">Platform Selection</span>
         </div>
       </header>

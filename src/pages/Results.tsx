@@ -17,7 +17,7 @@ import {
   Bar
 } from "recharts";
 import { ArrowLeft, Download, Share2, TrendingUp, TrendingDown, DollarSign, MousePointer } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.png.asset.json";
 import { useNavigate } from "react-router-dom";
 import ResultsChat from "@/components/ResultsChat";
 import ReferencableItem from "@/components/ReferencableItem";
@@ -83,7 +83,7 @@ const Results = () => {
               <ArrowLeft className="h-4 w-4" />
               <span className="hidden sm:inline">Dashboard</span>
             </Button>
-            <img src={logo} alt="Lucidity" className="h-6 w-auto object-contain flex-shrink-0" />
+            <img src={logo.url} alt="Lucidity" className="h-6 w-auto object-contain flex-shrink-0" />
             <span className="text-lg font-semibold truncate hidden md:inline">TechStart Inc - H1 2024 Report</span>
             <span className="text-sm font-semibold truncate md:hidden">TechStart Report</span>
           </div>

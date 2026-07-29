@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { ArrowLeft, ArrowRight, Target, TrendingUp, DollarSign, MousePointer, Eye, Users } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.png.asset.json";
 import { useNavigate } from "react-router-dom";
 
 const FocusAreas = () => {
@@ -98,7 +98,7 @@ const FocusAreas = () => {
             <ArrowLeft className="h-4 w-4" />
             Back
           </Button>
-          <img src={logo} alt="Lucidity" className="h-6" />
+          <img src={logo.url} alt="Lucidity" className="h-6" />
           <span className="text-lg font-semibold">Focus Areas</span>
         </div>
       </header>
