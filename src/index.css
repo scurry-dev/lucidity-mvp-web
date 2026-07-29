@@ -56,7 +56,21 @@ All colors MUST be HSL.
     --sidebar-border: 220 13% 91%;
 
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Lucidity landing page (always dark) palette */
+    --lp-bg: 218 12% 13%;
+    --lp-panel: 218 13% 17%;
+    --lp-raised: 215 12% 20%;
+    --lp-line: 217 10% 25%;
+    --lp-text: 216 20% 95%;
+    --lp-text-2: 215 9% 64%;
+    --lp-text-3: 215 7% 45%;
+    --lp-mint: 172 61% 68%;
+    --lp-purple: 253 81% 75%;
+    --lp-blue: 218 88% 71%;
+    --lp-highlight: 173 42% 20%;
   }
+
 
   .dark {
     --background: 222.2 84% 4.9%;
