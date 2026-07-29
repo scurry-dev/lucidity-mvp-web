@@ -57,24 +57,7 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        lp: {
-          bg: "hsl(var(--lp-bg))",
-          panel: "hsl(var(--lp-panel))",
-          raised: "hsl(var(--lp-raised))",
-          line: "hsl(var(--lp-line))",
-          text: "hsl(var(--lp-text))",
-          muted: "hsl(var(--lp-text-2))",
-          faint: "hsl(var(--lp-text-3))",
-          mint: "hsl(var(--lp-mint))",
-          purple: "hsl(var(--lp-purple))",
-          blue: "hsl(var(--lp-blue))",
-          highlight: "hsl(var(--lp-highlight))",
-        },
       },
-      fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
-      },
-
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
