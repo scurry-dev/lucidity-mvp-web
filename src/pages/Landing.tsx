@@ -56,7 +56,7 @@ const steps = [
 const platforms = [
   { category: "Ads", name: "Meta", status: "Live", icon: siMeta },
   { category: "Ads", name: "Google Ads", status: "Live", icon: siGoogleads },
-  { category: "Ads", name: "TikTok", status: "In development", icon: siTiktok },
+  { category: "Ads", name: "TikTok", status: "In development", icon: { ...siTiktok, hex: "EE1D52" } },
   { category: "Web", name: "GA4", status: "Live", icon: siGoogleanalytics },
   { category: "E-commerce", name: "Shopify", status: "In build", icon: siShopify },
   { category: "CRM", name: "HubSpot", status: "In build", icon: siHubspot },
