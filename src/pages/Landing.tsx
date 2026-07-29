@@ -216,7 +216,26 @@ const Landing = () => {
       <section className="border-y border-border bg-[hsl(var(--card))]/40">
         <div className="mx-auto max-w-6xl px-6 py-20">
           <SectionLabel>What the output is</SectionLabel>
-          <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:items-start">
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
+            <div>
+              <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">
+                A report that explains itself
+              </h2>
+              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                The screenshot above is the actual output: a single page with headline metrics, platform
+                breakdown, campaign performance and a ranked action plan. No deck assembly required.
+              </p>
+              <div className="mt-6">
+                <a
+                  href="/sample-report.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-sm font-medium text-primary underline-offset-4 hover:underline"
+                >
+                  Open the full sample report <ArrowUpRight className="h-3.5 w-3.5" />
+                </a>
+              </div>
+            </div>
             <div className="space-y-7">
               {outputs.map((o) => (
                 <div key={o.title}>
@@ -224,33 +243,11 @@ const Landing = () => {
                   <p className="text-sm leading-relaxed text-muted-foreground">{o.body}</p>
                 </div>
               ))}
-              <div>
-                <a
-                  href="/sample-report.html"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-sm font-medium text-primary underline-offset-4 hover:underline"
-                >
-                  View the full report <ArrowUpRight className="h-3.5 w-3.5" />
-                </a>
-              </div>
             </div>
-
-            <figure className="min-w-0">
-              <div className="max-h-[620px] overflow-auto rounded-xl border border-border bg-background p-2">
-                <img
-                  src="/sample-report-full.png"
-                  alt={SHOT_ALT}
-                  width={1600}
-                  height={1743}
-                  className="block w-full min-w-[600px] rounded-lg"
-                />
-              </div>
-              <figcaption className="mt-3 text-xs text-[hsl(var(--faint))]">
-                Sample output, condensed. Google Ads, Meta and GA4. Demo account, not client data.
-              </figcaption>
-            </figure>
           </div>
+          <p className="mt-12 text-xs text-[hsl(var(--faint))]">
+            Sample output, condensed. Google Ads, Meta and GA4. Demo account, not client data.
+          </p>
         </div>
       </section>
 
