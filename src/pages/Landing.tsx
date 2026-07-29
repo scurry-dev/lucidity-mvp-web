@@ -1,6 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { Check, ArrowUpRight } from "lucide-react";
 import logo from "@/assets/logo.png";
+import {
+  siMeta,
+  siGoogleads,
+  siTiktok,
+  siGoogleanalytics,
+  siShopify,
+  siHubspot,
+} from "simple-icons";
+
 
 const SIGNUP = "https://app.lucidityanalytics.com/signup";
 const CALL = "https://calendar.app.google/UJK9SbPPz1nxUbB36";
