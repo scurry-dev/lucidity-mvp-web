@@ -1,6 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { Check, ArrowUpRight } from "lucide-react";
 import logo from "@/assets/logo.png";
+import {
+  siMeta,
+  siGoogleads,
+  siTiktok,
+  siGoogleanalytics,
+  siShopify,
+  siHubspot,
+} from "simple-icons";
+
 
 const SIGNUP = "https://app.lucidityanalytics.com/signup";
 const CALL = "https://calendar.app.google/UJK9SbPPz1nxUbB36";
@@ -45,13 +54,31 @@ const steps = [
 ];
 
 const platforms = [
-  { category: "Ads", name: "Meta", status: "Live" },
-  { category: "Ads", name: "Google Ads", status: "Live" },
-  { category: "Ads", name: "TikTok", status: "In development" },
-  { category: "Web", name: "GA4", status: "Live" },
-  { category: "E-commerce", name: "Shopify", status: "In build" },
-  { category: "CRM", name: "HubSpot", status: "In build" },
+  { category: "Ads", name: "Meta", status: "Live", icon: siMeta },
+  { category: "Ads", name: "Google Ads", status: "Live", icon: siGoogleads },
+  { category: "Ads", name: "TikTok", status: "In development", icon: { ...siTiktok, hex: "EE1D52" } },
+  { category: "Web", name: "GA4", status: "Live", icon: siGoogleanalytics },
+  { category: "E-commerce", name: "Shopify", status: "In build", icon: siShopify },
+  { category: "CRM", name: "HubSpot", status: "In build", icon: siHubspot },
 ];
+
+const BrandMark = ({ icon }: { icon: { path: string; hex: string; title: string } }) => (
+  <span
+    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-border bg-[hsl(var(--raised))]"
+    style={{ boxShadow: `inset 0 0 0 1px #${icon.hex}22` }}
+  >
+    <svg
+      role="img"
+      aria-label={`${icon.title} logo`}
+      viewBox="0 0 24 24"
+      className="h-5 w-5"
+      fill={`#${icon.hex}`}
+    >
+      <path d={icon.path} />
+    </svg>
+  </span>
+);
+
 
 const audience = [
   "Solo to about 25 people, carrying ten to thirty client accounts",
@@ -276,51 +303,47 @@ const Landing = () => {
       <section className="border-y border-border bg-[hsl(var(--card))]/40">
         <div className="mx-auto max-w-6xl px-6 py-20">
           <SectionLabel>Connections</SectionLabel>
-          <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-            <div>
-              <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">
-                Four categories, one normalized model
-              </h2>
-              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                Ads, web, e-commerce and CRM. Completing them connects ad spend to web behavior to revenue to
-                pipeline in one place, which is the difference between channel reporting and full-funnel
-                reporting.
-              </p>
-            </div>
-            <div className="overflow-hidden rounded-xl border border-border">
-              {platforms.map((p, i) => {
-                const live = p.status === "Live";
-                return (
-                  <div
-                    key={p.name}
-                    className={`flex items-center justify-between gap-4 bg-[hsl(var(--card))] px-5 py-4 ${
-                      i > 0 ? "border-t border-border" : ""
+          <div className="max-w-2xl">
+            <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">
+              Four categories, one normalized model
+            </h2>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              Ads, web, e-commerce and CRM. Completing them connects ad spend to web behavior to revenue to
+              pipeline in one place, which is the difference between channel reporting and full-funnel
+              reporting.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {platforms.map((p) => {
+              const live = p.status === "Live";
+              return (
+                <div
+                  key={p.name}
+                  className="group relative flex items-center gap-4 rounded-xl border border-border bg-[hsl(var(--card))] p-5 transition-colors hover:border-primary/40"
+                >
+                  <BrandMark icon={p.icon} />
+                  <div className="min-w-0">
+                    <div className="text-xs uppercase tracking-[0.14em] text-[hsl(var(--faint))]">
+                      {p.category}
+                    </div>
+                    <div className="mt-0.5 truncate text-sm font-semibold">{p.name}</div>
+                  </div>
+                  <span
+                    className={`ml-auto inline-flex shrink-0 items-center gap-2 rounded-full border px-2.5 py-1 text-xs font-medium ${
+                      live
+                        ? "border-primary/40 bg-primary/10 text-primary"
+                        : "border-border bg-[hsl(var(--raised))] text-muted-foreground"
                     }`}
                   >
-                    <div className="flex items-baseline gap-3">
-                      <span className="w-28 shrink-0 text-xs uppercase tracking-[0.14em] text-[hsl(var(--faint))]">
-                        {p.category}
-                      </span>
-                      <span className="text-sm font-medium">{p.name}</span>
-                    </div>
                     <span
-                      className={`inline-flex items-center gap-2 rounded-full border px-2.5 py-1 text-xs font-medium ${
-                        live
-                          ? "border-primary/40 bg-primary/10 text-primary"
-                          : "border-border bg-[hsl(var(--raised))] text-muted-foreground"
-                      }`}
-                    >
-                      <span
-                        className={`h-1.5 w-1.5 rounded-full ${
-                          live ? "bg-primary" : "bg-[hsl(var(--faint))]"
-                        }`}
-                      />
-                      {p.status}
-                    </span>
-                  </div>
-                );
-              })}
-            </div>
+                      className={`h-1.5 w-1.5 rounded-full ${live ? "bg-primary" : "bg-[hsl(var(--faint))]"}`}
+                    />
+                    {p.status}
+                  </span>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
