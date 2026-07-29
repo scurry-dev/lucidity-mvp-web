@@ -54,12 +54,12 @@ const steps = [
 ];
 
 const platforms = [
-  { category: "Ads", name: "Meta", status: "Live", icon: siMeta },
-  { category: "Ads", name: "Google Ads", status: "Live", icon: siGoogleads },
-  { category: "Ads", name: "TikTok", status: "In development", icon: { ...siTiktok, hex: "EE1D52" } },
-  { category: "Web", name: "GA4", status: "Live", icon: siGoogleanalytics },
-  { category: "E-commerce", name: "Shopify", status: "In build", icon: siShopify },
-  { category: "CRM", name: "HubSpot", status: "In build", icon: siHubspot },
+  { category: "Ads", name: "Meta", icon: siMeta },
+  { category: "Ads", name: "Google Ads", icon: siGoogleads },
+  { category: "Ads", name: "TikTok", icon: { ...siTiktok, hex: "EE1D52" } },
+  { category: "Web", name: "GA4", icon: siGoogleanalytics },
+  { category: "E-commerce", name: "Shopify", icon: siShopify },
+  { category: "CRM", name: "HubSpot", icon: siHubspot },
 ];
 
 const BrandMark = ({ icon }: { icon: { path: string; hex: string; title: string } }) => (
@@ -315,35 +315,20 @@ const Landing = () => {
           </div>
 
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {platforms.map((p) => {
-              const live = p.status === "Live";
-              return (
-                <div
-                  key={p.name}
-                  className="group relative flex items-center gap-4 rounded-xl border border-border bg-[hsl(var(--card))] p-5 transition-colors hover:border-primary/40"
-                >
-                  <BrandMark icon={p.icon} />
-                  <div className="min-w-0">
-                    <div className="text-xs uppercase tracking-[0.14em] text-[hsl(var(--faint))]">
-                      {p.category}
-                    </div>
-                    <div className="mt-0.5 truncate text-sm font-semibold">{p.name}</div>
+            {platforms.map((p) => (
+              <div
+                key={p.name}
+                className="group relative flex items-center gap-4 rounded-xl border border-border bg-[hsl(var(--card))] p-5 transition-colors hover:border-primary/40"
+              >
+                <BrandMark icon={p.icon} />
+                <div className="min-w-0">
+                  <div className="text-xs uppercase tracking-[0.14em] text-[hsl(var(--faint))]">
+                    {p.category}
                   </div>
-                  <span
-                    className={`ml-auto inline-flex shrink-0 items-center gap-2 rounded-full border px-2.5 py-1 text-xs font-medium ${
-                      live
-                        ? "border-primary/40 bg-primary/10 text-primary"
-                        : "border-border bg-[hsl(var(--raised))] text-muted-foreground"
-                    }`}
-                  >
-                    <span
-                      className={`h-1.5 w-1.5 rounded-full ${live ? "bg-primary" : "bg-[hsl(var(--faint))]"}`}
-                    />
-                    {p.status}
-                  </span>
+                  <div className="mt-0.5 truncate text-sm font-semibold">{p.name}</div>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </div>
       </section>
