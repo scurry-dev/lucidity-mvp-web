@@ -321,7 +321,7 @@ const Landing = () => {
       </header>
 
       {/* Problem */}
-      <section className="mx-auto max-w-6xl px-6 py-20">
+      <section data-reveal className="mx-auto max-w-6xl px-6 py-20">
         <SectionLabel>No more reporting pain</SectionLabel>
 
         <div className="relative grid gap-4 md:grid-cols-3">
@@ -352,7 +352,7 @@ const Landing = () => {
       </section>
 
       {/* Comparison */}
-      <section className="border-y border-border bg-[hsl(var(--card))]/40">
+      <section data-reveal className="border-y border-border bg-[hsl(var(--card))]/40">
         <div className="mx-auto max-w-6xl px-6 py-20">
           <SectionLabel>From days to minutes</SectionLabel>
 
@@ -453,7 +453,7 @@ const Landing = () => {
       </section>
 
       {/* Output */}
-      <section className="border-y border-border bg-[hsl(var(--card))]/40">
+      <section id="output" data-reveal className="border-y border-border bg-[hsl(var(--card))]/40">
         <div className="mx-auto max-w-6xl px-6 py-20">
           <SectionLabel>What the output is</SectionLabel>
           <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
@@ -480,7 +480,7 @@ const Landing = () => {
       </section>
 
       {/* How it works */}
-      <section className="mx-auto max-w-6xl px-6 py-20">
+      <section id="how-it-works" data-reveal className="mx-auto max-w-6xl px-6 py-20">
         <SectionLabel>How it works</SectionLabel>
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((s) => (
@@ -494,7 +494,7 @@ const Landing = () => {
       </section>
 
       {/* Platforms */}
-      <section className="border-y border-border bg-[hsl(var(--card))]/40">
+      <section id="connections" data-reveal className="border-y border-border bg-[hsl(var(--card))]/40">
         <div className="mx-auto max-w-6xl px-6 py-20">
           <SectionLabel>Connections</SectionLabel>
           <div className="max-w-2xl">
@@ -528,7 +528,7 @@ const Landing = () => {
       </section>
 
       {/* Who it's for */}
-      <section className="mx-auto max-w-6xl px-6 py-20">
+      <section data-reveal className="mx-auto max-w-6xl px-6 py-20">
         <SectionLabel>Who it is for</SectionLabel>
         <ul className="grid gap-4 md:grid-cols-2">
           {audience.map((a) => (
@@ -541,7 +541,7 @@ const Landing = () => {
       </section>
 
       {/* Pricing */}
-      <section className="border-y border-border bg-[hsl(var(--card))]/40">
+      <section id="pricing" data-reveal className="border-y border-border bg-[hsl(var(--card))]/40">
         <div className="mx-auto max-w-6xl px-6 py-20">
           <SectionLabel>Pricing</SectionLabel>
           <p className="mb-10 max-w-2xl text-sm leading-relaxed text-muted-foreground">
@@ -597,7 +597,7 @@ const Landing = () => {
       </section>
 
       {/* Close */}
-      <section className="mx-auto max-w-6xl px-6 py-24">
+      <section data-reveal className="mx-auto max-w-6xl px-6 py-24">
         <div className="max-w-2xl">
           <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
             Connect one account, build the first report free
