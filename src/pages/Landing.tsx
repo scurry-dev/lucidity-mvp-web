@@ -532,7 +532,7 @@ const Landing = () => {
         <SectionLabel>Who it is for</SectionLabel>
         <ul className="grid gap-4 md:grid-cols-2">
           {audience.map((a) => (
-            <li key={a} className="flex items-start gap-3 rounded-xl border border-border bg-[hsl(var(--card))] p-5">
+            <li key={a} className="flex items-start gap-3 rounded-xl border border-border bg-[hsl(var(--card))] p-5 transition-colors duration-300 hover:border-primary/40">
               <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
               <span className="text-sm leading-relaxed text-muted-foreground">{a}</span>
             </li>
