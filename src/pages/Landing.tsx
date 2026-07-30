@@ -180,14 +180,16 @@ const Landing = () => {
 
             {/* Scrollable full report */}
             <div className="relative">
-              <div className="max-h-[580px] overflow-y-auto overflow-x-hidden p-2">
+              <div
+                className="max-h-[580px] touch-pan-y overflow-y-auto overflow-x-hidden p-2"
+                style={{ WebkitOverflowScrolling: 'touch', overscrollBehaviorY: 'contain' }}
+              >
                 <img
                   src="/sample-report-full.png"
                   alt={SHOT_ALT}
                   width={1600}
                   height={3313}
-
-                  className="block w-full min-w-[600px] rounded-lg"
+                  className="block w-full rounded-lg md:min-w-[600px]"
                 />
               </div>
               {/* Scroll hint */}
