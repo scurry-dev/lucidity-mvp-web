@@ -109,6 +109,7 @@ All colors MUST be HSL.
 
 /* Lucidity marketing page — scoped dark brand theme */
 .lucidity {
+  overflow-x: clip;
   --background: 220 12% 13%;
   --foreground: 220 17% 95%;
   --card: 220 13% 17%;
