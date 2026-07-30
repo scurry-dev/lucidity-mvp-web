@@ -1,5 +1,6 @@
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Check, ArrowUpRight, Clock, RotateCcw, ArrowRight, XCircle, CheckCircle2, Layers, FileText, Repeat } from "lucide-react";
+import { Check, ArrowUpRight, Clock, RotateCcw, ArrowRight, XCircle, CheckCircle2, Layers, FileText, Repeat, Menu, X, Lock } from "lucide-react";
 import logo from "@/assets/logo.png";
 import {
   siMeta,
