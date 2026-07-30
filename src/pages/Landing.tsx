@@ -484,7 +484,7 @@ const Landing = () => {
         <SectionLabel>How it works</SectionLabel>
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((s) => (
-            <div key={s.n} className="rounded-xl border border-border bg-[hsl(var(--card))] p-6">
+            <div key={s.n} className="rounded-xl border border-border bg-[hsl(var(--card))] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40">
               <div className="mb-3 text-xs font-semibold tracking-[0.16em] text-primary">{s.n}</div>
               <h3 className="mb-1.5 text-base font-semibold">{s.title}</h3>
               <p className="text-sm leading-relaxed text-muted-foreground">{s.body}</p>
