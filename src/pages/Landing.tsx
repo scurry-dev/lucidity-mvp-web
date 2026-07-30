@@ -63,10 +63,10 @@ const steps = [
 const platforms = [
   { category: "Ads", name: "Meta", icon: siMeta, tone: "text-accent", bg: "bg-accent/10", border: "group-hover:border-accent/40" },
   { category: "Ads", name: "Google Ads", icon: siGoogleads, tone: "text-accent", bg: "bg-accent/10", border: "group-hover:border-accent/40" },
-  { category: "Ads", name: "TikTok", icon: { ...siTiktok, hex: "EE1D52" }, tone: "text-accent", bg: "bg-accent/10", border: "group-hover:border-accent/40" },
+  { category: "Ads", name: "TikTok", icon: { ...siTiktok, hex: "EE1D52" }, tone: "text-accent", bg: "bg-accent/10", border: "group-hover:border-accent/40", comingSoon: true },
   { category: "Web", name: "GA4", icon: siGoogleanalytics, tone: "text-secondary", bg: "bg-secondary/10", border: "group-hover:border-secondary/40" },
-  { category: "E-commerce", name: "Shopify", icon: siShopify, tone: "text-primary", bg: "bg-primary/10", border: "group-hover:border-primary/40" },
-  { category: "CRM", name: "HubSpot", icon: siHubspot, tone: "text-secondary", bg: "bg-secondary/10", border: "group-hover:border-secondary/40" },
+  { category: "E-commerce", name: "Shopify", icon: siShopify, tone: "text-primary", bg: "bg-primary/10", border: "group-hover:border-primary/40", comingSoon: true },
+  { category: "CRM", name: "HubSpot", icon: siHubspot, tone: "text-secondary", bg: "bg-secondary/10", border: "group-hover:border-secondary/40", comingSoon: true },
 ];
 
 const BrandMark = ({ icon, tone, bg }: { icon: { path: string; hex: string; title: string }; tone: string; bg: string }) => (
