@@ -221,8 +221,12 @@ const Landing = () => {
 
 
       {/* Hero */}
-      <header className="border-b border-border">
-        <div className="mx-auto max-w-6xl px-6 pb-16 pt-20 md:pt-28">
+      <header id="top" className="relative overflow-x-clip border-b border-border">
+        {/* Depth: grid + radial wash */}
+        <div className="lucidity-grid pointer-events-none absolute inset-x-0 top-0 h-[620px]" aria-hidden="true" />
+        <div className="pointer-events-none absolute left-1/2 top-[-180px] h-[480px] w-[900px] max-w-[140vw] -translate-x-1/2 rounded-full bg-primary/10 blur-[140px]" aria-hidden="true" />
+
+        <div className="relative mx-auto max-w-6xl px-6 pb-16 pt-20 md:pt-28">
           <h1 className="max-w-4xl text-4xl font-bold leading-[1.08] tracking-tight md:text-6xl">
             Build the client report once.{" "}
             <span className="text-primary">Rerun it every month.</span>
@@ -236,10 +240,10 @@ const Landing = () => {
             Works inside Claude as an MCP connector, or as a standalone web app.
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-3">
-            <Button asChild size="lg">
+            <Button asChild size="lg" className="transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/20">
               <a href={SIGNUP}>Build your first report free</a>
             </Button>
-            <Button asChild size="lg" variant="outline" className="bg-transparent">
+            <Button asChild size="lg" variant="outline" className="bg-transparent transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/50">
               <a href={CALL} target="_blank" rel="noopener noreferrer">
                 Book a 20-minute intro call
               </a>
@@ -253,7 +257,7 @@ const Landing = () => {
           <div className="pointer-events-none absolute -left-20 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-primary/10 blur-[120px]" />
           <div className="pointer-events-none absolute -right-20 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-secondary/10 blur-[120px]" />
 
-          <figure className="relative overflow-hidden rounded-2xl border border-border bg-[hsl(var(--card))] shadow-2xl shadow-black/20">
+          <figure className="relative overflow-hidden rounded-2xl border border-border bg-[hsl(var(--card))] shadow-2xl shadow-black/30 ring-1 ring-white/5">
             {/* Browser chrome */}
             <div className="flex items-center gap-3 border-b border-border bg-[hsl(var(--muted))] px-4 py-3">
               <div className="flex gap-1.5">
@@ -261,22 +265,44 @@ const Landing = () => {
                 <span className="h-2.5 w-2.5 rounded-full bg-yellow-500/80" />
                 <span className="h-2.5 w-2.5 rounded-full bg-green-500/80" />
               </div>
-              <div className="mx-auto flex h-7 max-w-md flex-1 items-center justify-center rounded-md border border-border bg-[hsl(var(--background))] px-4 text-[11px] text-[hsl(var(--faint))]">
+              <div className="mx-auto flex h-7 max-w-md flex-1 items-center justify-center gap-1.5 rounded-md border border-border bg-[hsl(var(--background))] px-4 text-[11px] text-[hsl(var(--faint))]">
+                <Lock className="h-3 w-3" />
                 app.lucidityanalytics.com/report/acme-paid-media
               </div>
             </div>
 
             {/* Scrollable live report (responsive: the HTML adapts to mobile) */}
             <div className="relative bg-[hsl(var(--card))] p-2">
+              {/* Loading skeleton */}
+              <div
+                aria-hidden="true"
+                className={`pointer-events-none absolute inset-2 z-10 overflow-hidden rounded-lg bg-[hsl(var(--raised))] transition-opacity duration-500 ${
+                  reportLoaded ? "opacity-0" : "opacity-100"
+                }`}
+              >
+                <div className="animate-pulse space-y-4 p-6">
+                  <div className="h-5 w-1/3 rounded bg-[hsl(var(--border))]" />
+                  <div className="h-3 w-1/2 rounded bg-[hsl(var(--border))]/70" />
+                  <div className="grid grid-cols-2 gap-4 pt-4 sm:grid-cols-4">
+                    {Array.from({ length: 4 }).map((_, i) => (
+                      <div key={i} className="h-20 rounded-lg bg-[hsl(var(--border))]/60" />
+                    ))}
+                  </div>
+                  <div className="h-40 rounded-lg bg-[hsl(var(--border))]/50" />
+                  <div className="h-28 rounded-lg bg-[hsl(var(--border))]/40" />
+                </div>
+              </div>
               <iframe
                 src="/sample-report.html"
                 title={SHOT_ALT}
                 loading="lazy"
                 scrolling="yes"
+                onLoad={() => setReportLoaded(true)}
                 className="block h-[520px] w-full rounded-lg border-0 bg-white md:h-[580px]"
                 style={{ WebkitOverflowScrolling: 'touch' }}
               />
             </div>
+
 
           </figure>
 
