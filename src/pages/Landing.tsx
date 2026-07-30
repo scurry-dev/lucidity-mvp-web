@@ -330,7 +330,7 @@ const Landing = () => {
             return (
               <div
                 key={p.title}
-                className="group relative flex flex-col items-center rounded-2xl border border-border bg-[hsl(var(--card))] px-6 py-8 text-center"
+                className="group relative flex flex-col items-center rounded-2xl border border-border bg-[hsl(var(--card))] px-6 py-8 text-center transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg hover:shadow-black/20"
               >
                 <div
                   className={`mb-5 flex h-14 w-14 items-center justify-center rounded-2xl ${p.bg} transition-transform duration-300 group-hover:scale-105`}
