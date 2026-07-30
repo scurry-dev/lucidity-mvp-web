@@ -19,15 +19,15 @@ const SHOT_ALT =
 const problems = [
   {
     title: "No more scattered data",
-    body: "Ads, analytics, commerce and CRM each expose a different schema, grain and attribution window. Lucidity joins them into one normalized layer, so a conversion means the same thing everywhere.",
+    bullets: ["Different schemas, grains and attribution windows", "One normalized layer across every source"],
   },
   {
     title: "No more hand-built reports",
-    body: "Pull, clean, join, chart, write the narrative. Senior people spend the week assembling data instead of interpreting it. Lucidity builds the structure once and reruns it every period.",
+    bullets: ["Stop pulling, cleaning, joining and charting by hand", "Build the structure once, rerun it every period"],
   },
   {
     title: "No more starting over",
-    body: "Next cycle the same person repeats the same steps on new rows, and one follow-up question restarts the whole process. Lucidity keeps the report structure in place — only the data changes.",
+    bullets: ["Same report structure, new data each cycle", "Follow-up questions don't restart the process"],
   },
 ];
 
@@ -213,8 +213,15 @@ const Landing = () => {
         <div className="grid gap-5 md:grid-cols-3">
           {problems.map((p) => (
             <div key={p.title} className="rounded-xl border border-border bg-[hsl(var(--card))] p-6">
-              <h3 className="mb-2 text-base font-semibold">{p.title}</h3>
-              <p className="text-sm leading-relaxed text-muted-foreground">{p.body}</p>
+              <h3 className="mb-3 text-base font-semibold">{p.title}</h3>
+              <ul className="space-y-2">
+                {p.bullets.map((b) => (
+                  <li key={b} className="flex items-start gap-2 text-sm text-muted-foreground">
+                    <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-primary" />
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>
