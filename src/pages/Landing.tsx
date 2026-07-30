@@ -629,15 +629,16 @@ const Landing = () => {
       {/* Footer */}
       <footer className="border-t border-border bg-[hsl(var(--card))]/40">
         <div className="mx-auto max-w-6xl px-6 py-12">
-          <div className="rounded-xl border border-border bg-[hsl(var(--card))] p-6">
-            <h3 className="mb-2 text-sm font-semibold">What Lucidity does not do.</h3>
-            <p className="text-sm leading-relaxed text-muted-foreground">
-              Lucidity is a read-only reporting tool. We do not create, edit, or optimize ads on your behalf,
-              and we do not manage bidding or make any changes to your ad accounts. Your campaigns remain
-              fully under your control.
+          <div className="flex items-start gap-2.5 border-b border-border pb-6 text-xs leading-relaxed text-[hsl(var(--faint))]">
+            <Lock className="mt-0.5 h-3.5 w-3.5 shrink-0" />
+            <p>
+              <span className="font-medium text-muted-foreground">Read-only by design.</span> Lucidity does
+              not create, edit, or optimize ads, and does not manage bidding or change your ad accounts. Your
+              campaigns remain fully under your control.
             </p>
           </div>
-          <div className="mt-8 flex flex-col gap-3 text-sm text-[hsl(var(--faint))] sm:flex-row sm:items-center sm:justify-between">
+          <div className="mt-6 flex flex-col gap-3 text-sm text-[hsl(var(--faint))] sm:flex-row sm:items-center sm:justify-between">
+
             <span>© 2025 Lucidity LLC. All rights reserved.</span>
             <div className="flex items-center gap-6">
               <a
