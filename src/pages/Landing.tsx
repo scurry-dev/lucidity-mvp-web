@@ -19,15 +19,21 @@ const SHOT_ALT =
 const problems = [
   {
     title: "No more scattered data",
-    bullets: ["Different schemas, grains and attribution windows", "One normalized layer across every source"],
+    icon: Layers,
+    tone: "text-primary",
+    bg: "bg-primary/10",
   },
   {
     title: "No more hand-built reports",
-    bullets: ["Stop pulling, cleaning, joining and charting by hand", "Build the structure once, rerun it every period"],
+    icon: FileText,
+    tone: "text-secondary",
+    bg: "bg-secondary/10",
   },
   {
     title: "No more starting over",
-    bullets: ["Same report structure, new data each cycle", "Follow-up questions don't restart the process"],
+    icon: Repeat,
+    tone: "text-mint",
+    bg: "bg-mint/10",
   },
 ];
 
