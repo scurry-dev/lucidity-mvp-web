@@ -63,10 +63,10 @@ const steps = [
 const platforms = [
   { category: "Ads", name: "Meta", icon: siMeta, tone: "text-accent", bg: "bg-accent/10", border: "group-hover:border-accent/40" },
   { category: "Ads", name: "Google Ads", icon: siGoogleads, tone: "text-accent", bg: "bg-accent/10", border: "group-hover:border-accent/40" },
-  { category: "Ads", name: "TikTok", icon: { ...siTiktok, hex: "EE1D52" }, tone: "text-accent", bg: "bg-accent/10", border: "group-hover:border-accent/40" },
+  { category: "Ads", name: "TikTok", icon: { ...siTiktok, hex: "EE1D52" }, tone: "text-accent", bg: "bg-accent/10", border: "group-hover:border-accent/40", comingSoon: true },
   { category: "Web", name: "GA4", icon: siGoogleanalytics, tone: "text-secondary", bg: "bg-secondary/10", border: "group-hover:border-secondary/40" },
   { category: "E-commerce", name: "Shopify", icon: siShopify, tone: "text-primary", bg: "bg-primary/10", border: "group-hover:border-primary/40" },
-  { category: "CRM", name: "HubSpot", icon: siHubspot, tone: "text-secondary", bg: "bg-secondary/10", border: "group-hover:border-secondary/40" },
+  { category: "CRM", name: "HubSpot", icon: siHubspot, tone: "text-secondary", bg: "bg-secondary/10", border: "group-hover:border-secondary/40", comingSoon: true },
 ];
 
 const BrandMark = ({ icon, tone, bg }: { icon: { path: string; hex: string; title: string }; tone: string; bg: string }) => (
@@ -512,12 +512,17 @@ const Landing = () => {
                 className={`group relative flex items-center gap-4 rounded-xl border border-border bg-[hsl(var(--card))] p-5 transition-colors duration-300 ${p.border}`}
               >
                 <BrandMark icon={p.icon} tone={p.tone} bg={p.bg} />
-                <div className="min-w-0">
+                <div className="min-w-0 flex-1">
                   <div className={`text-xs uppercase tracking-[0.14em] ${p.tone} opacity-80`}>
                     {p.category}
                   </div>
                   <div className="mt-0.5 truncate text-sm font-semibold">{p.name}</div>
                 </div>
+                {p.comingSoon && (
+                  <span className="shrink-0 rounded-full border border-border bg-[hsl(var(--raised))] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
+                    Coming soon
+                  </span>
+                )}
               </div>
             ))}
           </div>
