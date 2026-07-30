@@ -554,12 +554,13 @@ const Landing = () => {
             {tiers.map((t) => (
               <div
                 key={t.name}
-                className={`rounded-xl border p-6 ${
+                className={`relative rounded-xl border p-6 transition-all duration-300 hover:-translate-y-1 ${
                   t.featured
-                    ? "border-primary/50 bg-[hsl(var(--raised))]"
-                    : "border-border bg-[hsl(var(--card))]"
+                    ? "border-primary/50 bg-[hsl(var(--raised))] shadow-lg shadow-primary/10 hover:shadow-primary/20 md:-mt-2"
+                    : "border-border bg-[hsl(var(--card))] hover:border-primary/40"
                 }`}
               >
+
                 <div className="mb-4 flex items-center justify-between">
                   <h3 className="text-base font-semibold">{t.name}</h3>
                   {t.featured && (
