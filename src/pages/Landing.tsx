@@ -61,21 +61,21 @@ const steps = [
 ];
 
 const platforms = [
-  { category: "Ads", name: "Meta", icon: siMeta },
-  { category: "Ads", name: "Google Ads", icon: siGoogleads },
-  { category: "Ads", name: "TikTok", icon: { ...siTiktok, hex: "EE1D52" } },
-  { category: "Web", name: "GA4", icon: siGoogleanalytics },
-  { category: "E-commerce", name: "Shopify", icon: siShopify },
-  { category: "CRM", name: "HubSpot", icon: siHubspot },
+  { category: "Ads", name: "Meta", icon: siMeta, tone: "text-accent", bg: "bg-accent/10", border: "group-hover:border-accent/40" },
+  { category: "Ads", name: "Google Ads", icon: siGoogleads, tone: "text-accent", bg: "bg-accent/10", border: "group-hover:border-accent/40" },
+  { category: "Ads", name: "TikTok", icon: { ...siTiktok, hex: "EE1D52" }, tone: "text-accent", bg: "bg-accent/10", border: "group-hover:border-accent/40" },
+  { category: "Web", name: "GA4", icon: siGoogleanalytics, tone: "text-secondary", bg: "bg-secondary/10", border: "group-hover:border-secondary/40" },
+  { category: "E-commerce", name: "Shopify", icon: siShopify, tone: "text-primary", bg: "bg-primary/10", border: "group-hover:border-primary/40" },
+  { category: "CRM", name: "HubSpot", icon: siHubspot, tone: "text-secondary", bg: "bg-secondary/10", border: "group-hover:border-secondary/40" },
 ];
 
-const BrandMark = ({ icon }: { icon: { path: string; hex: string; title: string } }) => (
-  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-border bg-[hsl(var(--raised))] transition-colors duration-300 group-hover:border-primary/40">
+const BrandMark = ({ icon, tone, bg }: { icon: { path: string; hex: string; title: string }; tone: string; bg: string }) => (
+  <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-border ${bg} transition-colors duration-300 group-hover:border-current`}>
     <svg
       role="img"
       aria-label={`${icon.title} logo`}
       viewBox="0 0 24 24"
-      className="h-5 w-5 fill-current text-muted-foreground opacity-70 transition-all duration-300 group-hover:text-primary group-hover:opacity-100"
+      className={`h-5 w-5 fill-current text-muted-foreground opacity-70 transition-all duration-300 group-hover:${tone} group-hover:opacity-100`}
     >
       <path d={icon.path} />
     </svg>
@@ -509,11 +509,11 @@ const Landing = () => {
             {platforms.map((p) => (
               <div
                 key={p.name}
-                className="group relative flex items-center gap-4 rounded-xl border border-border bg-[hsl(var(--card))] p-5 transition-colors hover:border-primary/40"
+                className={`group relative flex items-center gap-4 rounded-xl border border-border bg-[hsl(var(--card))] p-5 transition-colors duration-300 ${p.border}`}
               >
-                <BrandMark icon={p.icon} />
+                <BrandMark icon={p.icon} tone={p.tone} bg={p.bg} />
                 <div className="min-w-0">
-                  <div className="text-xs uppercase tracking-[0.14em] text-[hsl(var(--faint))]">
+                  <div className={`text-xs uppercase tracking-[0.14em] ${p.tone} opacity-80`}>
                     {p.category}
                   </div>
                   <div className="mt-0.5 truncate text-sm font-semibold">{p.name}</div>
