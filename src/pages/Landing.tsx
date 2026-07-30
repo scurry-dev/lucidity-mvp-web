@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Check, ArrowUpRight, Clock, RotateCcw, ArrowRight, XCircle, CheckCircle2 } from "lucide-react";
+import { Check, ArrowUpRight, Clock, RotateCcw, ArrowRight, XCircle, CheckCircle2, Layers, FileText, Repeat } from "lucide-react";
 import logo from "@/assets/logo.png";
 import {
   siMeta,
@@ -19,15 +19,21 @@ const SHOT_ALT =
 const problems = [
   {
     title: "No more scattered data",
-    bullets: ["Different schemas, grains and attribution windows", "One normalized layer across every source"],
+    icon: Layers,
+    tone: "text-primary",
+    bg: "bg-primary/10",
   },
   {
     title: "No more hand-built reports",
-    bullets: ["Stop pulling, cleaning, joining and charting by hand", "Build the structure once, rerun it every period"],
+    icon: FileText,
+    tone: "text-secondary",
+    bg: "bg-secondary/10",
   },
   {
     title: "No more starting over",
-    bullets: ["Same report structure, new data each cycle", "Follow-up questions don't restart the process"],
+    icon: Repeat,
+    tone: "text-accent",
+    bg: "bg-accent/10",
   },
 ];
 
@@ -210,20 +216,30 @@ const Landing = () => {
       <section className="mx-auto max-w-6xl px-6 py-20">
         <SectionLabel>No more reporting pain</SectionLabel>
 
-        <div className="grid gap-5 md:grid-cols-3">
-          {problems.map((p) => (
-            <div key={p.title} className="rounded-xl border border-border bg-[hsl(var(--card))] p-6">
-              <h3 className="mb-3 text-base font-semibold">{p.title}</h3>
-              <ul className="space-y-2">
-                {p.bullets.map((b) => (
-                  <li key={b} className="flex items-start gap-2 text-sm text-muted-foreground">
-                    <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-primary" />
-                    <span>{b}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+        <div className="relative grid gap-4 md:grid-cols-3">
+          {problems.map((p, i) => {
+            const Icon = p.icon;
+            return (
+              <div
+                key={p.title}
+                className="group relative flex flex-col items-center rounded-2xl border border-border bg-[hsl(var(--card))] px-6 py-8 text-center"
+              >
+                <div
+                  className={`mb-5 flex h-14 w-14 items-center justify-center rounded-2xl ${p.bg} transition-transform duration-300 group-hover:scale-105`}
+                >
+                  <Icon className={`h-7 w-7 ${p.tone}`} strokeWidth={1.5} />
+                </div>
+                <h3 className="text-base font-semibold leading-snug tracking-tight">{p.title}</h3>
+
+                {/* Connector arrows between cards (desktop only) */}
+                {i < problems.length - 1 && (
+                  <div className="pointer-events-none absolute -right-3 top-1/2 hidden -translate-y-1/2 md:block">
+                    <ArrowRight className="h-4 w-4 text-[hsl(var(--faint))]" />
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
       </section>
 
