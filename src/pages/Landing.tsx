@@ -421,8 +421,8 @@ const Landing = () => {
           </div>
           <p className="mt-6 text-sm text-muted-foreground">
             Questions?{" "}
-            <a href="mailto:sean@lucidityapps.com" className="text-primary underline-offset-4 hover:underline">
-              sean@lucidityapps.com
+            <a href="mailto:support@lucidityanalytics.com" className="text-primary underline-offset-4 hover:underline">
+              support@lucidityanalytics.com
             </a>
           </p>
         </div>
@@ -450,8 +450,8 @@ const Landing = () => {
               >
                 Sample report
               </a>
-              <a href="mailto:sean@lucidityapps.com" className="transition-colors hover:text-foreground">
-                sean@lucidityapps.com
+              <a href="mailto:support@lucidityanalytics.com" className="transition-colors hover:text-foreground">
+                support@lucidityanalytics.com
               </a>
               <a
                 href="https://www.lucidityanalytics.com/privacy-policy/"
