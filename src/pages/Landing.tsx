@@ -39,8 +39,8 @@ const problems = [
 
 const outputs = [
   {
-    title: "Every platform, one set of numbers",
-    body: "Meta, Google Ads and GA4 resolve to a single blended CPA and CTR, and the reconciliation happens before anything reads it.",
+    title: "Every source, one set of numbers",
+    body: "Cross-channel metrics resolve to a single blended CPA and CTR, and the reconciliation happens before anything reads it.",
   },
   {
     title: "It includes recommendations, not just charts",
@@ -354,20 +354,9 @@ const Landing = () => {
                 A report that explains itself
               </h2>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                The report above is the actual output: a single page with headline metrics, platform breakdown,
-                campaign performance and a ranked action plan. Scroll it to see the full narrative. No deck
-                assembly required.
+                A single page with headline metrics, channel breakdown, campaign performance and a ranked
+                action plan. The narrative is built in, so the report stands on its own without a walkthrough.
               </p>
-              <div className="mt-6">
-                <a
-                  href="/sample-report.html"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-sm font-medium text-primary underline-offset-4 hover:underline"
-                >
-                  Open the full sample report <ArrowUpRight className="h-3.5 w-3.5" />
-                </a>
-              </div>
             </div>
             <div className="space-y-7">
               {outputs.map((o) => (
@@ -378,9 +367,6 @@ const Landing = () => {
               ))}
             </div>
           </div>
-          <p className="mt-12 text-xs text-[hsl(var(--faint))]">
-            Sample output, condensed. Google Ads, Meta and GA4. Demo account, not client data.
-          </p>
         </div>
       </section>
 
