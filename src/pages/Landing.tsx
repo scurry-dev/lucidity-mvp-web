@@ -354,8 +354,9 @@ const Landing = () => {
                 A report that explains itself
               </h2>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                A single page with headline metrics, channel breakdown, campaign performance and a ranked
-                action plan. The narrative is built in, so the report stands on its own without a walkthrough.
+                One reusable structure. Deliver it as a single-page web report, a slide deck, a PDF, a
+                Word doc — whatever your client prefers. The narrative is built in, so the output stands on
+                its own without a walkthrough.
               </p>
             </div>
             <div className="space-y-7">
