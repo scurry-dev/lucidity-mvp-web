@@ -32,8 +32,8 @@ const problems = [
   {
     title: "No more starting over",
     icon: Repeat,
-    tone: "text-mint",
-    bg: "bg-mint/10",
+    tone: "text-accent",
+    bg: "bg-accent/10",
   },
 ];
 
