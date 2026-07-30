@@ -208,7 +208,7 @@ const Landing = () => {
 
       {/* Problem */}
       <section className="mx-auto max-w-6xl px-6 py-20">
-        <SectionLabel>Why reporting eats the month</SectionLabel>
+        <SectionLabel>No more reporting pain</SectionLabel>
 
         <div className="grid gap-5 md:grid-cols-3">
           {problems.map((p) => (
