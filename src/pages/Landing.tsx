@@ -178,23 +178,18 @@ const Landing = () => {
               </div>
             </div>
 
-            {/* Scrollable full report */}
-            <div className="relative">
-              <div
-                className="max-h-[580px] touch-pan-y overflow-y-auto overflow-x-hidden p-2"
-                style={{ WebkitOverflowScrolling: 'touch', overscrollBehaviorY: 'contain' }}
-              >
-                <img
-                  src="/sample-report-full.png"
-                  alt={SHOT_ALT}
-                  width={1600}
-                  height={3313}
-                  className="block w-full rounded-lg md:min-w-[600px]"
-                />
-              </div>
-              {/* Scroll hint */}
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[hsl(var(--card))] to-transparent" />
+            {/* Scrollable live report (responsive: the HTML adapts to mobile) */}
+            <div className="relative bg-[hsl(var(--card))] p-2">
+              <iframe
+                src="/sample-report.html"
+                title={SHOT_ALT}
+                loading="lazy"
+                scrolling="yes"
+                className="block h-[520px] w-full rounded-lg border-0 bg-white md:h-[580px]"
+                style={{ WebkitOverflowScrolling: 'touch' }}
+              />
             </div>
+
           </figure>
 
           <div className="relative mt-4 flex items-center gap-4 text-sm text-[hsl(var(--faint))]">
