@@ -512,12 +512,17 @@ const Landing = () => {
                 className={`group relative flex items-center gap-4 rounded-xl border border-border bg-[hsl(var(--card))] p-5 transition-colors duration-300 ${p.border}`}
               >
                 <BrandMark icon={p.icon} tone={p.tone} bg={p.bg} />
-                <div className="min-w-0">
+                <div className="min-w-0 flex-1">
                   <div className={`text-xs uppercase tracking-[0.14em] ${p.tone} opacity-80`}>
                     {p.category}
                   </div>
                   <div className="mt-0.5 truncate text-sm font-semibold">{p.name}</div>
                 </div>
+                {p.comingSoon && (
+                  <span className="shrink-0 rounded-full border border-border bg-[hsl(var(--raised))] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
+                    Coming soon
+                  </span>
+                )}
               </div>
             ))}
           </div>
