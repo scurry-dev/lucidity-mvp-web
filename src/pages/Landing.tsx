@@ -39,8 +39,8 @@ const problems = [
 
 const outputs = [
   {
-    title: "Every platform, one set of numbers",
-    body: "Meta, Google Ads and GA4 resolve to a single blended CPA and CTR, and the reconciliation happens before anything reads it.",
+    title: "Every source, one set of numbers",
+    body: "Cross-channel metrics resolve to a single blended CPA and CTR, and the reconciliation happens before anything reads it.",
   },
   {
     title: "It includes recommendations, not just charts",
