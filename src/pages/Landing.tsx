@@ -115,16 +115,64 @@ const SectionLabel = ({ children }: { children: React.ReactNode }) => (
   </div>
 );
 
+const navLinks = [
+  { href: "#output", label: "What you get" },
+  { href: "#how-it-works", label: "How it works" },
+  { href: "#connections", label: "Connections" },
+  { href: "#pricing", label: "Pricing" },
+];
+
+const useScrollReveal = () => {
+  useEffect(() => {
+    const nodes = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
+    if (typeof IntersectionObserver === "undefined" || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      nodes.forEach((n) => n.classList.add("is-revealed"));
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-revealed");
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { rootMargin: "0px 0px -10% 0px", threshold: 0.05 }
+    );
+    nodes.forEach((n) => io.observe(n));
+    return () => io.disconnect();
+  }, []);
+};
+
 const Landing = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [reportLoaded, setReportLoaded] = useState(false);
+  useScrollReveal();
+
   return (
     <div className="lucidity min-h-screen antialiased">
       {/* Nav */}
-      <nav className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur">
+      <nav className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-xl">
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3.5">
-          <div className="flex items-center gap-2.5">
+          <a href="#top" className="flex items-center gap-2.5">
             <img src={logo} alt="Lucidity" className="h-7 w-7" />
             <span className="text-[15px] font-semibold tracking-tight">Lucidity</span>
+          </a>
+
+          <div className="hidden items-center gap-1 lg:flex">
+            {navLinks.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                className="rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+              >
+                {l.label}
+              </a>
+            ))}
           </div>
+
           <div className="flex items-center gap-2">
             <a
               href="https://app.lucidityanalytics.com/login"
@@ -132,12 +180,45 @@ const Landing = () => {
             >
               Log in
             </a>
-            <Button asChild size="sm">
+            <Button asChild size="sm" className="transition-transform duration-200 hover:-translate-y-0.5">
               <a href={SIGNUP}>Build your first report free</a>
             </Button>
+            <button
+              type="button"
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={menuOpen}
+              onClick={() => setMenuOpen((v) => !v)}
+              className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:text-foreground lg:hidden"
+            >
+              {menuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+            </button>
           </div>
         </div>
+
+        {menuOpen && (
+          <div className="border-t border-border bg-background lg:hidden">
+            <div className="mx-auto flex max-w-6xl flex-col px-6 py-3">
+              {navLinks.map((l) => (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="rounded-md px-2 py-2.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  {l.label}
+                </a>
+              ))}
+              <a
+                href="https://app.lucidityanalytics.com/login"
+                className="rounded-md px-2 py-2.5 text-sm text-muted-foreground transition-colors hover:text-foreground sm:hidden"
+              >
+                Log in
+              </a>
+            </div>
+          </div>
+        )}
       </nav>
+
 
       {/* Hero */}
       <header className="border-b border-border">
