@@ -160,10 +160,10 @@ const Landing = () => {
         </div>
 
         {/* Hero artifact */}
-        <div className="relative mx-auto max-w-6xl px-6 pb-16">
+        <div className="relative mx-auto max-w-6xl overflow-x-clip px-6 pb-16">
           {/* Ambient glow */}
-          <div className="absolute -left-20 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-primary/10 blur-[120px]" />
-          <div className="absolute -right-20 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-secondary/10 blur-[120px]" />
+          <div className="pointer-events-none absolute -left-20 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-primary/10 blur-[120px]" />
+          <div className="pointer-events-none absolute -right-20 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-secondary/10 blur-[120px]" />
 
           <figure className="relative overflow-hidden rounded-2xl border border-border bg-[hsl(var(--card))] shadow-2xl shadow-black/20">
             {/* Browser chrome */}
