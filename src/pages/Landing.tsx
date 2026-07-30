@@ -1,5 +1,6 @@
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Check, ArrowUpRight, Clock, RotateCcw, ArrowRight, XCircle, CheckCircle2, Layers, FileText, Repeat } from "lucide-react";
+import { Check, ArrowUpRight, Clock, RotateCcw, ArrowRight, XCircle, CheckCircle2, Layers, FileText, Repeat, Menu, X, Lock } from "lucide-react";
 import logo from "@/assets/logo.png";
 import {
   siMeta,
@@ -114,16 +115,64 @@ const SectionLabel = ({ children }: { children: React.ReactNode }) => (
   </div>
 );
 
+const navLinks = [
+  { href: "#output", label: "What you get" },
+  { href: "#how-it-works", label: "How it works" },
+  { href: "#connections", label: "Connections" },
+  { href: "#pricing", label: "Pricing" },
+];
+
+const useScrollReveal = () => {
+  useEffect(() => {
+    const nodes = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
+    if (typeof IntersectionObserver === "undefined" || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      nodes.forEach((n) => n.classList.add("is-revealed"));
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-revealed");
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { rootMargin: "0px 0px -10% 0px", threshold: 0.05 }
+    );
+    nodes.forEach((n) => io.observe(n));
+    return () => io.disconnect();
+  }, []);
+};
+
 const Landing = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [reportLoaded, setReportLoaded] = useState(false);
+  useScrollReveal();
+
   return (
     <div className="lucidity min-h-screen antialiased">
       {/* Nav */}
-      <nav className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur">
+      <nav className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-xl">
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3.5">
-          <div className="flex items-center gap-2.5">
+          <a href="#top" className="flex items-center gap-2.5">
             <img src={logo} alt="Lucidity" className="h-7 w-7" />
             <span className="text-[15px] font-semibold tracking-tight">Lucidity</span>
+          </a>
+
+          <div className="hidden items-center gap-1 lg:flex">
+            {navLinks.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                className="rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+              >
+                {l.label}
+              </a>
+            ))}
           </div>
+
           <div className="flex items-center gap-2">
             <a
               href="https://app.lucidityanalytics.com/login"
@@ -131,16 +180,53 @@ const Landing = () => {
             >
               Log in
             </a>
-            <Button asChild size="sm">
+            <Button asChild size="sm" className="transition-transform duration-200 hover:-translate-y-0.5">
               <a href={SIGNUP}>Build your first report free</a>
             </Button>
+            <button
+              type="button"
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={menuOpen}
+              onClick={() => setMenuOpen((v) => !v)}
+              className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:text-foreground lg:hidden"
+            >
+              {menuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+            </button>
           </div>
         </div>
+
+        {menuOpen && (
+          <div className="border-t border-border bg-background lg:hidden">
+            <div className="mx-auto flex max-w-6xl flex-col px-6 py-3">
+              {navLinks.map((l) => (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="rounded-md px-2 py-2.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  {l.label}
+                </a>
+              ))}
+              <a
+                href="https://app.lucidityanalytics.com/login"
+                className="rounded-md px-2 py-2.5 text-sm text-muted-foreground transition-colors hover:text-foreground sm:hidden"
+              >
+                Log in
+              </a>
+            </div>
+          </div>
+        )}
       </nav>
 
+
       {/* Hero */}
-      <header className="border-b border-border">
-        <div className="mx-auto max-w-6xl px-6 pb-16 pt-20 md:pt-28">
+      <header id="top" className="relative overflow-x-clip border-b border-border">
+        {/* Depth: grid + radial wash */}
+        <div className="lucidity-grid pointer-events-none absolute inset-x-0 top-0 h-[620px]" aria-hidden="true" />
+        <div className="pointer-events-none absolute left-1/2 top-[-180px] h-[480px] w-[900px] max-w-[140vw] -translate-x-1/2 rounded-full bg-primary/10 blur-[140px]" aria-hidden="true" />
+
+        <div className="relative mx-auto max-w-6xl px-6 pb-16 pt-20 md:pt-28">
           <h1 className="max-w-4xl text-4xl font-bold leading-[1.08] tracking-tight md:text-6xl">
             Build the client report once.{" "}
             <span className="text-primary">Rerun it every month.</span>
@@ -154,10 +240,10 @@ const Landing = () => {
             Works inside Claude as an MCP connector, or as a standalone web app.
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-3">
-            <Button asChild size="lg">
+            <Button asChild size="lg" className="transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/20">
               <a href={SIGNUP}>Build your first report free</a>
             </Button>
-            <Button asChild size="lg" variant="outline" className="bg-transparent">
+            <Button asChild size="lg" variant="outline" className="bg-transparent transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/50">
               <a href={CALL} target="_blank" rel="noopener noreferrer">
                 Book a 20-minute intro call
               </a>
@@ -171,7 +257,7 @@ const Landing = () => {
           <div className="pointer-events-none absolute -left-20 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-primary/10 blur-[120px]" />
           <div className="pointer-events-none absolute -right-20 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-secondary/10 blur-[120px]" />
 
-          <figure className="relative overflow-hidden rounded-2xl border border-border bg-[hsl(var(--card))] shadow-2xl shadow-black/20">
+          <figure className="relative overflow-hidden rounded-2xl border border-border bg-[hsl(var(--card))] shadow-2xl shadow-black/30 ring-1 ring-white/5">
             {/* Browser chrome */}
             <div className="flex items-center gap-3 border-b border-border bg-[hsl(var(--muted))] px-4 py-3">
               <div className="flex gap-1.5">
@@ -179,22 +265,44 @@ const Landing = () => {
                 <span className="h-2.5 w-2.5 rounded-full bg-yellow-500/80" />
                 <span className="h-2.5 w-2.5 rounded-full bg-green-500/80" />
               </div>
-              <div className="mx-auto flex h-7 max-w-md flex-1 items-center justify-center rounded-md border border-border bg-[hsl(var(--background))] px-4 text-[11px] text-[hsl(var(--faint))]">
+              <div className="mx-auto flex h-7 max-w-md flex-1 items-center justify-center gap-1.5 rounded-md border border-border bg-[hsl(var(--background))] px-4 text-[11px] text-[hsl(var(--faint))]">
+                <Lock className="h-3 w-3" />
                 app.lucidityanalytics.com/report/acme-paid-media
               </div>
             </div>
 
             {/* Scrollable live report (responsive: the HTML adapts to mobile) */}
             <div className="relative bg-[hsl(var(--card))] p-2">
+              {/* Loading skeleton */}
+              <div
+                aria-hidden="true"
+                className={`pointer-events-none absolute inset-2 z-10 overflow-hidden rounded-lg bg-[hsl(var(--raised))] transition-opacity duration-500 ${
+                  reportLoaded ? "opacity-0" : "opacity-100"
+                }`}
+              >
+                <div className="animate-pulse space-y-4 p-6">
+                  <div className="h-5 w-1/3 rounded bg-[hsl(var(--border))]" />
+                  <div className="h-3 w-1/2 rounded bg-[hsl(var(--border))]/70" />
+                  <div className="grid grid-cols-2 gap-4 pt-4 sm:grid-cols-4">
+                    {Array.from({ length: 4 }).map((_, i) => (
+                      <div key={i} className="h-20 rounded-lg bg-[hsl(var(--border))]/60" />
+                    ))}
+                  </div>
+                  <div className="h-40 rounded-lg bg-[hsl(var(--border))]/50" />
+                  <div className="h-28 rounded-lg bg-[hsl(var(--border))]/40" />
+                </div>
+              </div>
               <iframe
                 src="/sample-report.html"
                 title={SHOT_ALT}
                 loading="lazy"
                 scrolling="yes"
+                onLoad={() => setReportLoaded(true)}
                 className="block h-[520px] w-full rounded-lg border-0 bg-white md:h-[580px]"
                 style={{ WebkitOverflowScrolling: 'touch' }}
               />
             </div>
+
 
           </figure>
 
@@ -213,7 +321,7 @@ const Landing = () => {
       </header>
 
       {/* Problem */}
-      <section className="mx-auto max-w-6xl px-6 py-20">
+      <section data-reveal className="mx-auto max-w-6xl px-6 py-20">
         <SectionLabel>No more reporting pain</SectionLabel>
 
         <div className="relative grid gap-4 md:grid-cols-3">
@@ -222,7 +330,7 @@ const Landing = () => {
             return (
               <div
                 key={p.title}
-                className="group relative flex flex-col items-center rounded-2xl border border-border bg-[hsl(var(--card))] px-6 py-8 text-center"
+                className="group relative flex flex-col items-center rounded-2xl border border-border bg-[hsl(var(--card))] px-6 py-8 text-center transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg hover:shadow-black/20"
               >
                 <div
                   className={`mb-5 flex h-14 w-14 items-center justify-center rounded-2xl ${p.bg} transition-transform duration-300 group-hover:scale-105`}
@@ -244,7 +352,7 @@ const Landing = () => {
       </section>
 
       {/* Comparison */}
-      <section className="border-y border-border bg-[hsl(var(--card))]/40">
+      <section data-reveal className="border-y border-border bg-[hsl(var(--card))]/40">
         <div className="mx-auto max-w-6xl px-6 py-20">
           <SectionLabel>From days to minutes</SectionLabel>
 
@@ -345,7 +453,7 @@ const Landing = () => {
       </section>
 
       {/* Output */}
-      <section className="border-y border-border bg-[hsl(var(--card))]/40">
+      <section id="output" data-reveal className="border-y border-border bg-[hsl(var(--card))]/40">
         <div className="mx-auto max-w-6xl px-6 py-20">
           <SectionLabel>What the output is</SectionLabel>
           <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
@@ -372,11 +480,11 @@ const Landing = () => {
       </section>
 
       {/* How it works */}
-      <section className="mx-auto max-w-6xl px-6 py-20">
+      <section id="how-it-works" data-reveal className="mx-auto max-w-6xl px-6 py-20">
         <SectionLabel>How it works</SectionLabel>
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((s) => (
-            <div key={s.n} className="rounded-xl border border-border bg-[hsl(var(--card))] p-6">
+            <div key={s.n} className="rounded-xl border border-border bg-[hsl(var(--card))] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40">
               <div className="mb-3 text-xs font-semibold tracking-[0.16em] text-primary">{s.n}</div>
               <h3 className="mb-1.5 text-base font-semibold">{s.title}</h3>
               <p className="text-sm leading-relaxed text-muted-foreground">{s.body}</p>
@@ -386,7 +494,7 @@ const Landing = () => {
       </section>
 
       {/* Platforms */}
-      <section className="border-y border-border bg-[hsl(var(--card))]/40">
+      <section id="connections" data-reveal className="border-y border-border bg-[hsl(var(--card))]/40">
         <div className="mx-auto max-w-6xl px-6 py-20">
           <SectionLabel>Connections</SectionLabel>
           <div className="max-w-2xl">
@@ -420,11 +528,11 @@ const Landing = () => {
       </section>
 
       {/* Who it's for */}
-      <section className="mx-auto max-w-6xl px-6 py-20">
+      <section data-reveal className="mx-auto max-w-6xl px-6 py-20">
         <SectionLabel>Who it is for</SectionLabel>
         <ul className="grid gap-4 md:grid-cols-2">
           {audience.map((a) => (
-            <li key={a} className="flex items-start gap-3 rounded-xl border border-border bg-[hsl(var(--card))] p-5">
+            <li key={a} className="flex items-start gap-3 rounded-xl border border-border bg-[hsl(var(--card))] p-5 transition-colors duration-300 hover:border-primary/40">
               <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
               <span className="text-sm leading-relaxed text-muted-foreground">{a}</span>
             </li>
@@ -433,7 +541,7 @@ const Landing = () => {
       </section>
 
       {/* Pricing */}
-      <section className="border-y border-border bg-[hsl(var(--card))]/40">
+      <section id="pricing" data-reveal className="border-y border-border bg-[hsl(var(--card))]/40">
         <div className="mx-auto max-w-6xl px-6 py-20">
           <SectionLabel>Pricing</SectionLabel>
           <p className="mb-10 max-w-2xl text-sm leading-relaxed text-muted-foreground">
@@ -446,12 +554,13 @@ const Landing = () => {
             {tiers.map((t) => (
               <div
                 key={t.name}
-                className={`rounded-xl border p-6 ${
+                className={`relative rounded-xl border p-6 transition-all duration-300 hover:-translate-y-1 ${
                   t.featured
-                    ? "border-primary/50 bg-[hsl(var(--raised))]"
-                    : "border-border bg-[hsl(var(--card))]"
+                    ? "border-primary/50 bg-[hsl(var(--raised))] shadow-lg shadow-primary/10 hover:shadow-primary/20 md:-mt-2"
+                    : "border-border bg-[hsl(var(--card))] hover:border-primary/40"
                 }`}
               >
+
                 <div className="mb-4 flex items-center justify-between">
                   <h3 className="text-base font-semibold">{t.name}</h3>
                   {t.featured && (
@@ -489,7 +598,7 @@ const Landing = () => {
       </section>
 
       {/* Close */}
-      <section className="mx-auto max-w-6xl px-6 py-24">
+      <section data-reveal className="mx-auto max-w-6xl px-6 py-24">
         <div className="max-w-2xl">
           <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
             Connect one account, build the first report free
@@ -520,15 +629,16 @@ const Landing = () => {
       {/* Footer */}
       <footer className="border-t border-border bg-[hsl(var(--card))]/40">
         <div className="mx-auto max-w-6xl px-6 py-12">
-          <div className="rounded-xl border border-border bg-[hsl(var(--card))] p-6">
-            <h3 className="mb-2 text-sm font-semibold">What Lucidity does not do.</h3>
-            <p className="text-sm leading-relaxed text-muted-foreground">
-              Lucidity is a read-only reporting tool. We do not create, edit, or optimize ads on your behalf,
-              and we do not manage bidding or make any changes to your ad accounts. Your campaigns remain
-              fully under your control.
+          <div className="flex items-start gap-2.5 border-b border-border pb-6 text-xs leading-relaxed text-[hsl(var(--faint))]">
+            <Lock className="mt-0.5 h-3.5 w-3.5 shrink-0" />
+            <p>
+              <span className="font-medium text-muted-foreground">Read-only by design.</span> Lucidity does
+              not create, edit, or optimize ads, and does not manage bidding or change your ad accounts. Your
+              campaigns remain fully under your control.
             </p>
           </div>
-          <div className="mt-8 flex flex-col gap-3 text-sm text-[hsl(var(--faint))] sm:flex-row sm:items-center sm:justify-between">
+          <div className="mt-6 flex flex-col gap-3 text-sm text-[hsl(var(--faint))] sm:flex-row sm:items-center sm:justify-between">
+
             <span>© 2025 Lucidity LLC. All rights reserved.</span>
             <div className="flex items-center gap-6">
               <a
