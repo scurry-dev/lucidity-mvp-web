@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Check, ArrowUpRight } from "lucide-react";
+import { Check, ArrowUpRight, Clock, RotateCcw, ArrowRight, XCircle, CheckCircle2 } from "lucide-react";
 import logo from "@/assets/logo.png";
 import {
   siMeta,
