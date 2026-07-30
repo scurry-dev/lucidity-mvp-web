@@ -70,21 +70,18 @@ const platforms = [
 ];
 
 const BrandMark = ({ icon }: { icon: { path: string; hex: string; title: string } }) => (
-  <span
-    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-border bg-[hsl(var(--raised))]"
-    style={{ boxShadow: `inset 0 0 0 1px #${icon.hex}22` }}
-  >
+  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-border bg-[hsl(var(--raised))] transition-colors duration-300 group-hover:border-primary/40">
     <svg
       role="img"
       aria-label={`${icon.title} logo`}
       viewBox="0 0 24 24"
-      className="h-5 w-5"
-      fill={`#${icon.hex}`}
+      className="h-5 w-5 fill-current text-muted-foreground opacity-70 transition-all duration-300 group-hover:text-primary group-hover:opacity-100"
     >
       <path d={icon.path} />
     </svg>
   </span>
 );
+
 
 
 const audience = [
