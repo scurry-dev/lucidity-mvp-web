@@ -18,16 +18,16 @@ const SHOT_ALT =
 
 const problems = [
   {
-    title: "The data is scattered by design",
-    body: "Ads, analytics, commerce and CRM each expose a different schema, grain and attribution window. Joining them is a rebuild, not a merge.",
+    title: "No more scattered data",
+    body: "Ads, analytics, commerce and CRM each expose a different schema, grain and attribution window. Lucidity joins them into one normalized layer, so a conversion means the same thing everywhere.",
   },
   {
-    title: "Every report is assembled by hand",
-    body: "Pull, clean, join, chart, write the narrative. Senior people spend the week assembling data instead of interpreting it.",
+    title: "No more hand-built reports",
+    body: "Pull, clean, join, chart, write the narrative. Senior people spend the week assembling data instead of interpreting it. Lucidity builds the structure once and reruns it every period.",
   },
   {
-    title: "Nothing carries forward",
-    body: "Next cycle the same person repeats the same steps on new rows, and one follow-up question restarts the whole process.",
+    title: "No more starting over",
+    body: "Next cycle the same person repeats the same steps on new rows, and one follow-up question restarts the whole process. Lucidity keeps the report structure in place — only the data changes.",
   },
 ];
 
