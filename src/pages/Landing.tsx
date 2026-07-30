@@ -209,36 +209,110 @@ const Landing = () => {
       {/* Problem */}
       <section className="mx-auto max-w-6xl px-6 py-20">
         <SectionLabel>Why reporting eats the month</SectionLabel>
-        <div className="grid gap-5 md:grid-cols-3">
+
+        {/* Comparison visualization */}
+        <div className="relative grid gap-4 md:grid-cols-2">
+          {/* VS badge */}
+          <div className="absolute left-1/2 top-1/2 z-10 hidden -translate-x-1/2 -translate-y-1/2 md:block">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-[hsl(var(--background))] text-xs font-bold uppercase tracking-wider text-muted-foreground shadow-lg">
+              vs
+            </div>
+          </div>
+
+          {/* Today */}
+          <div className="relative overflow-hidden rounded-2xl border border-border bg-[hsl(var(--card))] p-6">
+            <div className="mb-6 flex items-start justify-between">
+              <div>
+                <div className="mb-1 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+                  <XCircle className="h-3.5 w-3.5" />
+                  One client, today
+                </div>
+                <h3 className="text-lg font-semibold tracking-tight">Assembled by hand</h3>
+              </div>
+              <div className="rounded-full border border-border bg-[hsl(var(--raised))] px-3 py-1 text-xs font-semibold text-muted-foreground">
+                3–5 days
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              {[
+                { label: "Data preparation", time: "2–3 days", width: "w-full", tone: "bg-muted-foreground/40" },
+                { label: "Analysis", time: "½–1 day", width: "w-2/3", tone: "bg-muted-foreground/30" },
+                { label: "Visualization", time: "½–1 day", width: "w-2/3", tone: "bg-muted-foreground/30" },
+                { label: "Follow-up restarts it", time: "loop", width: "w-1/3", tone: "bg-destructive/40", loop: true },
+              ].map((item) => (
+                <div key={item.label} className="flex items-center gap-4">
+                  <div className="w-28 shrink-0 text-xs text-muted-foreground sm:w-32">{item.label}</div>
+                  <div className="flex flex-1 items-center gap-3">
+                    <div className="relative h-2.5 flex-1 overflow-hidden rounded-full bg-[hsl(var(--raised))]">
+                      <div className={`h-full rounded-full ${item.width} ${item.tone}`} />
+                    </div>
+                    <div className="flex w-20 shrink-0 items-center justify-end gap-1.5 text-xs font-medium text-muted-foreground">
+                      {item.loop && <RotateCcw className="h-3 w-3" />}
+                      {item.time}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-6 flex items-center gap-2 rounded-xl border border-dashed border-border bg-[hsl(var(--raised))] px-4 py-3 text-sm text-muted-foreground">
+              <Clock className="h-4 w-4 shrink-0 text-[hsl(var(--faint))]" />
+              <span>One follow-up question starts the process over.</span>
+            </div>
+          </div>
+
+          {/* With Lucidity */}
+          <div className="relative overflow-hidden rounded-2xl border border-primary/30 bg-[hsl(var(--raised))] p-6">
+            <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-primary/10 blur-[60px]" />
+            <div className="mb-6 flex items-start justify-between">
+              <div>
+                <div className="mb-1 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
+                  <CheckCircle2 className="h-3.5 w-3.5" />
+                  One client, with Lucidity
+                </div>
+                <h3 className="text-lg font-semibold tracking-tight">Built once, rerun monthly</h3>
+              </div>
+              <div className="rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
+                Hours → minutes
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              {[
+                { label: "First report", time: "hours", width: "w-1/4" },
+                { label: "Every rerun", time: "minutes", width: "w-1/6", loop: true },
+              ].map((item) => (
+                <div key={item.label} className="flex items-center gap-4">
+                  <div className="w-28 shrink-0 text-xs text-muted-foreground sm:w-32">{item.label}</div>
+                  <div className="flex flex-1 items-center gap-3">
+                    <div className="relative h-2.5 flex-1 overflow-hidden rounded-full bg-[hsl(var(--card))]">
+                      <div className={`h-full rounded-full bg-primary ${item.width}`} />
+                    </div>
+                    <div className="flex w-20 shrink-0 items-center justify-end gap-1.5 text-xs font-medium text-primary">
+                      {item.loop && <RotateCcw className="h-3 w-3" />}
+                      {item.time}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-6 flex items-center gap-2 rounded-xl border border-primary/20 bg-[hsl(var(--card))] px-4 py-3 text-sm text-muted-foreground">
+              <ArrowRight className="h-4 w-4 shrink-0 text-primary" />
+              <span>The structure stays in place. Only the data changes.</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Underlying problems */}
+        <div className="mt-10 grid gap-5 md:grid-cols-3">
           {problems.map((p) => (
             <div key={p.title} className="rounded-xl border border-border bg-[hsl(var(--card))] p-6">
               <h3 className="mb-2 text-base font-semibold">{p.title}</h3>
               <p className="text-sm leading-relaxed text-muted-foreground">{p.body}</p>
             </div>
           ))}
-        </div>
-
-        <div className="mt-6 grid gap-px overflow-hidden rounded-xl border border-border bg-border md:grid-cols-2">
-          <div className="bg-[hsl(var(--card))] p-6">
-            <div className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-              One client, today
-            </div>
-            <ul className="space-y-1.5 text-sm text-muted-foreground">
-              <li>Two to three days of data preparation</li>
-              <li>Half a day to a day of analysis</li>
-              <li>Half a day to a day of visualization</li>
-              <li>A follow-up question starts it over</li>
-            </ul>
-          </div>
-          <div className="bg-[hsl(var(--raised))] p-6">
-            <div className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
-              One client, with Lucidity
-            </div>
-            <ul className="space-y-1.5 text-sm text-muted-foreground">
-              <li>The first report takes hours instead of days</li>
-              <li>Every rerun after that takes minutes</li>
-            </ul>
-          </div>
         </div>
       </section>
 
