@@ -213,8 +213,15 @@ const Landing = () => {
         <div className="grid gap-5 md:grid-cols-3">
           {problems.map((p) => (
             <div key={p.title} className="rounded-xl border border-border bg-[hsl(var(--card))] p-6">
-              <h3 className="mb-2 text-base font-semibold">{p.title}</h3>
-              <p className="text-sm leading-relaxed text-muted-foreground">{p.body}</p>
+              <h3 className="mb-3 text-base font-semibold">{p.title}</h3>
+              <ul className="space-y-2">
+                {p.bullets.map((b) => (
+                  <li key={b} className="flex items-start gap-2 text-sm text-muted-foreground">
+                    <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-primary" />
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>
