@@ -7,6 +7,7 @@ import {
   siGoogleads,
   siTiktok,
   siGoogleanalytics,
+  siGooglesearchconsole,
   siShopify,
   siHubspot,
 } from "simple-icons";
