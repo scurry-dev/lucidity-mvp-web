@@ -30,7 +30,7 @@ const siKlaviyo = {
   title: "Klaviyo",
   slug: "klaviyo",
   hex: "00D688",
-  path: "M12 2l2.5 6.5L21 12l-6.5 3.5L12 22l-2.5-6.5L3 12l6.5-3.5z",
+  path: "M0 0h24l-8 12 8 12H0z",
 };
 
 
