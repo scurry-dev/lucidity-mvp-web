@@ -7,7 +7,6 @@ import {
   siGoogleads,
   siTiktok,
   siGoogleanalytics,
-  siGooglesearchconsole,
   siShopify,
   siHubspot,
 } from "simple-icons";
@@ -31,6 +30,13 @@ const siKlaviyo = {
   slug: "klaviyo",
   hex: "00D688",
   path: "M0 0h24l-8 12 8 12H0z",
+};
+
+const siGooglesearchconsole = {
+  title: "Google Search Console",
+  slug: "googlesearchconsole",
+  hex: "458CF5",
+  path: "M15 2h4v22h-4zM9 8h4v16H9zM3 14h4v10H3zM6 6a5 5 0 1 0 0 10 5 5 0 0 0 0-10zM9.5 14.5l6 7 2-2-7-6z",
 };
 
 
