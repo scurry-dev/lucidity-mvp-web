@@ -36,7 +36,7 @@ const siGooglesearchconsole = {
   title: "Google Search Console",
   slug: "googlesearchconsole",
   hex: "458CF5",
-  path: "M15 2h4v22h-4zM9 8h4v16H9zM3 14h4v10H3zM6 6a5 5 0 1 0 0 10 5 5 0 0 0 0-10zM9.5 14.5l6 7 2-2-7-6z",
+  path: "M18 2a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4h0a4 4 0 0 1-4-4V6a4 4 0 0 1 4-4zM12 7a4 4 0 0 1 4 4v5a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-5a4 4 0 0 1 4-4zM6.5 10a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9zM1.3 20.9l3.5-3.5 1.4 1.4-3.5 3.5z",
 };
 
 
