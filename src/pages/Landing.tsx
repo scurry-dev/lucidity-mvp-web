@@ -555,18 +555,6 @@ const Landing = () => {
         </div>
       </section>
 
-      {/* Who it's for */}
-      <section data-reveal className="mx-auto max-w-6xl px-6 py-20">
-        <SectionLabel>Who it is for</SectionLabel>
-        <ul className="grid gap-4 md:grid-cols-2">
-          {audience.map((a) => (
-            <li key={a} className="flex items-start gap-3 rounded-xl border border-border bg-[hsl(var(--card))] p-5 transition-colors duration-300 hover:border-primary/40">
-              <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-              <span className="text-sm leading-relaxed text-muted-foreground">{a}</span>
-            </li>
-          ))}
-        </ul>
-      </section>
 
       {/* Pricing */}
       <section id="pricing" data-reveal className="border-y border-border bg-[hsl(var(--card))]/40">
