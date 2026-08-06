@@ -116,12 +116,6 @@ const BrandMark = ({ icon, tone, bg }: { icon: { path: string; hex: string; titl
 
 
 
-const audience = [
-  "Solo to about 25 people, carrying ten to thirty client accounts",
-  "Running paid search, paid social, e-commerce or email and CRM work",
-  "The founder or a senior lead still builds or reviews the monthly reports",
-  "Somebody on the team has seen proper reporting infrastructure from the inside and knows what is missing",
-];
 
 const tiers = [
   { name: "Starter", clients: "up to 3 clients", price: "$99" },
