@@ -655,7 +655,7 @@ const Landing = () => {
           </div>
           <div className="mt-6 flex flex-col gap-3 text-sm text-[hsl(var(--faint))] sm:flex-row sm:items-center sm:justify-between">
 
-            <span>© 2025 Lucidity LLC. All rights reserved.</span>
+            <span>© 2026 Lucidity LLC. All rights reserved.</span>
             <div className="flex items-center gap-6">
               <a
                 href="/sample-report.html"
