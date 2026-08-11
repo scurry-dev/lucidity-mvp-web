@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Check, ArrowUpRight, Clock, RotateCcw, ArrowRight, XCircle, CheckCircle2, Layers, FileText, Repeat, Menu, X, Lock } from "lucide-react";
 import logo from "@/assets/logo.png";
-import HeroBackground from "@/components/HeroBackground";
 import {
   siMeta,
   siGoogleads,
@@ -246,10 +245,8 @@ const Landing = () => {
 
       {/* Hero */}
       <header id="top" className="relative overflow-x-clip border-b border-border">
-        {/* Depth: abstract data-node chart pattern + radial wash */}
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-[620px]" aria-hidden="true">
-          <HeroBackground />
-        </div>
+        {/* Depth: grid + radial wash */}
+        <div className="lucidity-grid pointer-events-none absolute inset-x-0 top-0 h-[620px]" aria-hidden="true" />
         <div className="pointer-events-none absolute left-1/2 top-[-180px] h-[480px] w-[900px] max-w-[140vw] -translate-x-1/2 rounded-full bg-primary/10 blur-[140px]" aria-hidden="true" />
 
         <div className="relative mx-auto max-w-6xl px-6 pb-16 pt-20 md:pt-28">
