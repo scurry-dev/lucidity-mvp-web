@@ -5,7 +5,7 @@ import logo from "@/assets/logo.png";
 
 const SIGNUP = "https://app.lucidityanalytics.com/signup";
 const EFFECTIVE_DATE = "February 3, 2026";
-const LAST_UPDATED = "February 3, 2026";
+const LAST_UPDATED = "August 11, 2026";
 
 const navLinks = [
   { href: "/#output", label: "What you get" },
