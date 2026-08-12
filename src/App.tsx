@@ -12,6 +12,7 @@ import FocusAreas from "./pages/FocusAreas";
 import ColorPalette from "./pages/ColorPalette";
 import Results from "./pages/Results";
 import AgencySetup from "./pages/AgencySetup";
+import Claude from "./pages/Claude";
 import NotFound from "./pages/NotFound";
 import AnalyticsTracker from "./components/AnalyticsTracker";
 
@@ -34,6 +35,7 @@ const App = () => (
           <Route path="/color-palette" element={<ColorPalette />} />
           <Route path="/results" element={<Results />} />
           <Route path="/agency-setup" element={<AgencySetup />} />
+          <Route path="/claude" element={<Claude />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
