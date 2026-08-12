@@ -34,7 +34,7 @@ const prerequisites = [
   {
     n: "01",
     title: "A Lucidity account",
-    body: "With at least one ad or analytics platform connected — Meta, Google Ads, Microsoft Advertising, LinkedIn Ads, TikTok Ads, or Google Analytics 4.",
+    body: "With at least one ad, analytics, or commerce platform connected. See the home page for the current list of supported integrations.",
   },
   {
     n: "02",
@@ -282,9 +282,9 @@ const Claude = () => {
             <span className="text-primary">ad performance.</span>
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            Query your Meta, Google Ads, Microsoft Advertising, LinkedIn Ads, and GA4 data
-            across a single normalized schema — directly from a Claude conversation. Save any
-            report as a reusable template and rerun it with one line next time.
+            Query your clients' ad, analytics, and commerce data across a single normalized
+            schema — directly from a Claude conversation. Save any report as a reusable
+            template and rerun it with one line next time.
           </p>
           <p className="mt-4 text-sm text-[hsl(var(--faint))]">
             Uses the Model Context Protocol. OAuth 2.1 with PKCE. Read-only.
@@ -473,8 +473,9 @@ const Claude = () => {
           </h2>
           <p className="mt-5 text-base leading-relaxed text-muted-foreground">
             Sign up for Lucidity in a minute, connect one ad account, then paste the MCP URL
-            into Claude's custom-connector flow. If you would rather have it set up with you,
-            book a walkthrough and I will do it on the call.
+            into Claude's custom-connector flow. If you would rather have someone walk you
+            through the whole thing — sign-up, first connection, and adding the connector to
+            Claude — book a call and I will set it up with you.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Button asChild size="lg">
