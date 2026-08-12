@@ -34,7 +34,7 @@ const prerequisites = [
   {
     n: "01",
     title: "A Lucidity account",
-    body: "With at least one ad, analytics, or commerce platform connected. See the home page for the current list of supported integrations.",
+    body: "With at least one platform connected across ads, web, e-commerce or CRM. See the home page for the current list of supported integrations.",
   },
   {
     n: "02",
@@ -282,7 +282,7 @@ const Claude = () => {
             <span className="text-primary">ad performance.</span>
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            Query your clients' ad, analytics, and commerce data across a single normalized
+            Query your clients' ads, web, e-commerce and CRM data across a single normalized
             schema — directly from a Claude conversation. Save any report as a reusable
             template and rerun it with one line next time.
           </p>
