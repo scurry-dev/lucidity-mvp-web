@@ -22,6 +22,8 @@ const SIGNUP = "https://app.lucidityanalytics.com/signup";
 const CALL = "https://calendar.app.google/UJK9SbPPz1nxUbB36";
 const CLAUDE_URL = "https://claude.ai/";
 const MCP_URL = "https://mcp.lucidityanalytics.com/mcp";
+// Permanent directory listing URL. Slugs are assigned at approval and cannot change.
+const CLAUDE_DIRECTORY_URL = "https://claude.ai/directory/connectors/lucidity";
 
 const navLinks = [
   { href: "/#output", label: "What you get" },
@@ -39,28 +41,23 @@ const prerequisites = [
   {
     n: "02",
     title: "A Claude account",
-    body: "Any plan — Free, Pro, Max, Team, or Enterprise. Custom connectors are available on all of them.",
+    body: "Any plan — Free, Pro, Max, Team, or Enterprise. Lucidity is in Claude’s connector directory, so it installs in a couple of taps on desktop or mobile.",
   },
 ];
 
 const installSteps = [
   {
     n: "01",
-    title: "Open connectors",
-    body: "In Claude, go to Customize → Connectors and choose Add custom connector.",
+    title: "Open the listing",
+    body: "Find Lucidity in Claude’s connector directory — or jump straight there with the button below.",
   },
   {
     n: "02",
-    title: "Paste the URL",
-    body: "Enter the Lucidity server URL below when Claude asks for it.",
-  },
-  {
-    n: "03",
-    title: "Sign in to Lucidity",
+    title: "Press Connect",
     body: "Claude opens a Lucidity sign-in page. Use email and password, or continue with Google. Your credentials are sent to Lucidity, not to Claude.",
   },
   {
-    n: "04",
+    n: "03",
     title: "Ask a question",
     body: "Try “how did my Meta and Google Ads spend compare last month?” — Lucidity’s tools run in the background.",
   },
@@ -339,7 +336,7 @@ const Claude = () => {
         <div className="mx-auto max-w-6xl px-6 py-20">
           <SectionLabel>How to add the connector</SectionLabel>
 
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {installSteps.map((s) => (
               <div
                 key={s.n}
@@ -364,13 +361,28 @@ const Claude = () => {
               </div>
               <div className="mx-auto flex h-7 max-w-md flex-1 items-center justify-center gap-1.5 rounded-md border border-border bg-[hsl(var(--background))] px-4 text-[11px] text-[hsl(var(--faint))]">
                 <Lock className="h-3 w-3" />
-                claude.ai/settings/connectors
+                claude.ai/directory/connectors/lucidity
               </div>
             </div>
             <div className="flex flex-col gap-4 p-6 sm:flex-row sm:items-center sm:justify-between">
               <div className="min-w-0">
                 <div className="mb-1 text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-                  Lucidity MCP URL
+                  Ready when you are
+                </div>
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  Opens the Lucidity listing in Claude. Works on desktop and mobile.
+                </p>
+              </div>
+              <Button asChild size="sm" className="shrink-0">
+                <a href={CLAUDE_DIRECTORY_URL} target="_blank" rel="noopener noreferrer">
+                  Connect Lucidity in Claude
+                </a>
+              </Button>
+            </div>
+            <div className="flex flex-col gap-3 border-t border-border px-6 py-4 sm:flex-row sm:items-center sm:justify-between">
+              <div className="min-w-0">
+                <div className="mb-1 text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+                  Claude Code or a desktop config
                 </div>
                 <code className="block truncate font-mono text-sm text-foreground">
                   {MCP_URL}
