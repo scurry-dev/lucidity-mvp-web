@@ -88,7 +88,17 @@ const steps = [
   { n: "04", title: "Insights and dashboards", body: "Charts, visualizations and recommendations." },
 ];
 
-const platforms = [
+type Platform = {
+  category: string;
+  name: string;
+  icon: { title: string; slug?: string; hex?: string; path: string };
+  tone: string;
+  bg: string;
+  border: string;
+  comingSoon?: boolean;
+};
+
+const platforms: Platform[] = [
   { category: "Ads", name: "Meta", icon: siMeta, tone: "text-accent", bg: "bg-accent/10", border: "group-hover:border-accent/40" },
   { category: "Ads", name: "Google Ads", icon: siGoogleads, tone: "text-accent", bg: "bg-accent/10", border: "group-hover:border-accent/40" },
   { category: "Ads", name: "Microsoft Ads", icon: siMicrosoftads, tone: "text-accent", bg: "bg-accent/10", border: "group-hover:border-accent/40" },
