@@ -111,7 +111,7 @@ const platforms: Platform[] = [
   { category: "CRM", name: "Klaviyo", icon: siKlaviyo, tone: "text-secondary", bg: "bg-secondary/10", border: "group-hover:border-secondary/40" },
 ];
 
-const BrandMark = ({ icon, tone, bg }: { icon: { path: string; hex: string; title: string }; tone: string; bg: string }) => (
+const BrandMark = ({ icon, tone, bg }: { icon: { path: string; title: string; hex?: string }; tone: string; bg: string }) => (
   <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-border ${bg} transition-colors duration-300 group-hover:border-current`}>
     <svg
       role="img"
