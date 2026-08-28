@@ -88,7 +88,17 @@ const steps = [
   { n: "04", title: "Insights and dashboards", body: "Charts, visualizations and recommendations." },
 ];
 
-const platforms = [
+type Platform = {
+  category: string;
+  name: string;
+  icon: { title: string; slug?: string; hex?: string; path: string };
+  tone: string;
+  bg: string;
+  border: string;
+  comingSoon?: boolean;
+};
+
+const platforms: Platform[] = [
   { category: "Ads", name: "Meta", icon: siMeta, tone: "text-accent", bg: "bg-accent/10", border: "group-hover:border-accent/40" },
   { category: "Ads", name: "Google Ads", icon: siGoogleads, tone: "text-accent", bg: "bg-accent/10", border: "group-hover:border-accent/40" },
   { category: "Ads", name: "Microsoft Ads", icon: siMicrosoftads, tone: "text-accent", bg: "bg-accent/10", border: "group-hover:border-accent/40" },
@@ -97,11 +107,11 @@ const platforms = [
   { category: "Web", name: "GA4", icon: siGoogleanalytics, tone: "text-secondary", bg: "bg-secondary/10", border: "group-hover:border-secondary/40" },
   { category: "Web", name: "Google Search Console", icon: siGooglesearchconsole, tone: "text-secondary", bg: "bg-secondary/10", border: "group-hover:border-secondary/40" },
   { category: "E-commerce", name: "Shopify", icon: siShopify, tone: "text-primary", bg: "bg-primary/10", border: "group-hover:border-primary/40" },
-  { category: "CRM", name: "HubSpot", icon: siHubspot, tone: "text-secondary", bg: "bg-secondary/10", border: "group-hover:border-secondary/40", comingSoon: true },
+  { category: "CRM", name: "HubSpot", icon: siHubspot, tone: "text-secondary", bg: "bg-secondary/10", border: "group-hover:border-secondary/40" },
   { category: "CRM", name: "Klaviyo", icon: siKlaviyo, tone: "text-secondary", bg: "bg-secondary/10", border: "group-hover:border-secondary/40" },
 ];
 
-const BrandMark = ({ icon, tone, bg }: { icon: { path: string; hex: string; title: string }; tone: string; bg: string }) => (
+const BrandMark = ({ icon, tone, bg }: { icon: { path: string; title: string; hex?: string }; tone: string; bg: string }) => (
   <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-border ${bg} transition-colors duration-300 group-hover:border-current`}>
     <svg
       role="img"
