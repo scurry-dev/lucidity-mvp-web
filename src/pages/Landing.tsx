@@ -278,7 +278,7 @@ const Landing = () => {
             </Button>
             <Button asChild size="lg" variant="outline" className="bg-transparent transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/50">
               <a href={CALL} target="_blank" rel="noopener noreferrer">
-                Book a 20-minute intro call
+                Book a demo
               </a>
             </Button>
           </div>
@@ -639,7 +639,7 @@ const Landing = () => {
             </Button>
             <Button asChild size="lg" variant="outline" className="bg-transparent">
               <a href={CALL} target="_blank" rel="noopener noreferrer">
-                Book a 20-minute intro call
+                Book a demo
               </a>
             </Button>
           </div>
