@@ -497,7 +497,7 @@ const Claude = () => {
             </Button>
             <Button asChild size="lg" variant="outline" className="bg-transparent">
               <a href={CALL} target="_blank" rel="noopener noreferrer">
-                Book a 20-minute intro call
+                Book a demo
               </a>
             </Button>
           </div>
