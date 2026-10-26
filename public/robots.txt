@@ -19,3 +19,5 @@ Disallow: /focus-areas
 Disallow: /color-palette
 Disallow: /results
 Disallow: /agency-setup
+
+Sitemap: https://www.lucidityanalytics.com/sitemap.xml
