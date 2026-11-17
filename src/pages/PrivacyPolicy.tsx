@@ -527,10 +527,10 @@ const PrivacyPolicy = () => {
                 <dt className="font-semibold text-foreground">Email</dt>
                 <dd className="text-muted-foreground">
                   <a
-                    href="mailto:support@lucidityapps.com"
+                    href="mailto:support@lucidityanalytics.com"
                     className="text-primary underline-offset-4 hover:underline"
                   >
-                    support@lucidityapps.com
+                    support@lucidityanalytics.com
                   </a>
                 </dd>
                 <dt className="font-semibold text-foreground">Address</dt>
