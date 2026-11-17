@@ -40,6 +40,14 @@ const siGooglesearchconsole = {
 };
 
 
+const siGooglemerchantcenter = {
+  title: "Google Merchant Center",
+  slug: "googlemerchantcenter",
+  hex: "4285F4",
+  path: "M4 8h16l-1.5 13.5a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8L4 8zm4-1a4 4 0 0 1 8 0v1h-2V7a2 2 0 0 0-4 0v1H8V7z",
+};
+
+
 const SIGNUP = "https://app.lucidityanalytics.com/signup";
 const CALL = "https://calendar.app.google/UJK9SbPPz1nxUbB36";
 const SHOT_ALT =
@@ -107,6 +115,7 @@ const platforms: Platform[] = [
   { category: "Web", name: "GA4", icon: siGoogleanalytics, tone: "text-secondary", bg: "bg-secondary/10", border: "group-hover:border-secondary/40" },
   { category: "Web", name: "Google Search Console", icon: siGooglesearchconsole, tone: "text-secondary", bg: "bg-secondary/10", border: "group-hover:border-secondary/40" },
   { category: "E-commerce", name: "Shopify", icon: siShopify, tone: "text-primary", bg: "bg-primary/10", border: "group-hover:border-primary/40" },
+  { category: "E-commerce", name: "Google Merchant Center", icon: siGooglemerchantcenter, tone: "text-primary", bg: "bg-primary/10", border: "group-hover:border-primary/40" },
   { category: "CRM", name: "HubSpot", icon: siHubspot, tone: "text-secondary", bg: "bg-secondary/10", border: "group-hover:border-secondary/40" },
   { category: "CRM", name: "Klaviyo", icon: siKlaviyo, tone: "text-secondary", bg: "bg-secondary/10", border: "group-hover:border-secondary/40" },
 ];
