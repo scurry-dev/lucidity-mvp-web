@@ -4,6 +4,7 @@ import {
   ArrowUpRight,
   BarChart3,
   Copy,
+  History,
   Database,
   List,
   Lock,
@@ -84,6 +85,13 @@ const tools = [
     bg: "bg-primary/10",
     title: "Query ad data",
     body: "Custom aggregations across the normalized cross-platform schema, with group-by, comma-separated metrics, and calculated formulas.",
+  },
+  {
+    icon: History,
+    tone: "text-primary",
+    bg: "bg-primary/10",
+    title: "Account change history",
+    body: "The budget, bid, status, targeting and creative edits made inside connected Google Ads and Meta accounts during a period, with before and after values and who or what made each one.",
   },
   {
     icon: Save,
