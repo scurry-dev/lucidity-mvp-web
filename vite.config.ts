@@ -14,6 +14,7 @@ const SITE_URL = "https://www.lucidityanalytics.com";
 // privacy-policy/index.html serves /privacy-policy/ (the URL we link to).
 const STATIC_ROUTES = [
   { file: "claude.html", url: "/claude" },
+  { file: "support.html", url: "/support" },
   { file: "privacy-policy/index.html", url: "/privacy-policy/" },
 ];
 

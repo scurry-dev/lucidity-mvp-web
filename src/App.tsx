@@ -14,6 +14,7 @@ import Results from "./pages/Results";
 import AgencySetup from "./pages/AgencySetup";
 import Claude from "./pages/Claude";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Support from "./pages/Support";
 import NotFound from "./pages/NotFound";
 import AnalyticsTracker from "./components/AnalyticsTracker";
 
@@ -38,6 +39,8 @@ const App = () => (
           <Route path="/results" element={<Results />} />
           <Route path="/agency-setup" element={<AgencySetup />} />
           <Route path="/claude" element={<Claude />} />
+          <Route path="/support" element={<Support />} />
+          <Route path="/support/" element={<Support />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/privacy-policy/" element={<PrivacyPolicy />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
