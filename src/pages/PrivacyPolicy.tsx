@@ -14,6 +14,23 @@ const navLinks = [
   { href: "/#pricing", label: "Pricing" },
 ];
 
+// Every assistant we are listed in. Section 5 is written against this list, so
+// adding a directory means adding a row here and nothing else.
+const aiAssistants = [
+  {
+    assistant: "Anthropic's Claude",
+    provider: "Anthropic",
+    directory: "Anthropic's connector directory",
+    privacyUrl: "https://www.anthropic.com/legal/privacy",
+  },
+  {
+    assistant: "OpenAI's ChatGPT",
+    provider: "OpenAI",
+    directory: "OpenAI's plugin directory",
+    privacyUrl: "https://openai.com/policies/privacy-policy",
+  },
+];
+
 const bodyClass = "text-base leading-relaxed text-muted-foreground";
 const listClass = "mt-4 space-y-2.5 pl-6 text-base leading-relaxed text-muted-foreground marker:text-[hsl(var(--faint))]";
 
@@ -34,13 +51,13 @@ const usagePurposes = [
   "Analyze information, including through automated and AI-driven processes, to generate insights, reports, recommendations, benchmarks, and aggregated or anonymized analytics to improve our services and product offerings.",
   "Personalize, measure, and improve our marketing and communications, including understanding how users engage with our website and services.",
   "Maintain internal records, logs, and backups for business continuity, compliance, auditing, and security purposes.",
-  "Facilitate optional integrations You have chosen to authorize between Your Lucidity account and third-party artificial intelligence assistants (such as Anthropic's Claude via the Model Context Protocol), so that those assistants may retrieve Your data on Your behalf.",
+  "Facilitate optional integrations You have chosen to authorize between Your Lucidity account and third-party artificial intelligence assistants (such as Anthropic's Claude or OpenAI's ChatGPT, via the Model Context Protocol), so that those assistants may retrieve Your data on Your behalf.",
 ];
 
 const disclosureRecipients = [
   "with data analytics, data hosting, software/IT, cybersecurity, cloud service, consultants, financial, legal, customer support, email delivery, and other similar providers that support our business.",
   "with banks and credit card processors to the extent necessary for the Company to deliver the services.",
-  "with third-party artificial intelligence assistants that You have chosen to connect to Your Lucidity account (such as Anthropic's Claude via the Model Context Protocol), for the purpose of enabling those assistants to retrieve Your data on Your behalf. See Section 5 for details.",
+  "with third-party artificial intelligence assistants that You have chosen to connect to Your Lucidity account (such as Anthropic's Claude or OpenAI's ChatGPT, via the Model Context Protocol), for the purpose of enabling those assistants to retrieve Your data on Your behalf. See Section 5 for details.",
   "when we believe sharing is necessary to protect our rights, preserve safety, investigate fraud or other wrongdoing.",
   "when required by law, which includes complying with any court order, law, or legal process, including responding to a government or regulatory request.",
   "in connection with the sale, transfer or financing of the Company's business or its assets, including a bankruptcy proceeding or to our affiliates.",
@@ -360,45 +377,62 @@ const PrivacyPolicy = () => {
 
           <Section n={5} title="Third-Party AI Assistant Integrations.">
             <p className={bodyClass}>
-              We offer an optional connector for Anthropic's Claude that allows You to query
-              Your Lucidity data from inside a Claude conversation. The connector uses the
-              Model Context Protocol (MCP) and is listed in Anthropic's Software Directory.
-              Connecting the connector is entirely optional and is initiated by You from
-              within Claude; disconnecting it from within Claude immediately revokes Claude's
-              access.
+              We offer optional connectors that allow You to query Your Lucidity data from
+              inside a conversation with a third-party artificial intelligence assistant. The
+              connectors use the Model Context Protocol (MCP). We are currently listed in{" "}
+              {aiAssistants.map((a, idx) => (
+                <span key={a.provider}>
+                  {idx > 0 && idx === aiAssistants.length - 1 ? " and " : idx > 0 ? ", " : ""}
+                  {a.directory} for {a.assistant}
+                </span>
+              ))}
+              . Connecting a connector is entirely optional and is initiated by You from
+              within the assistant; disconnecting it there immediately revokes that
+              assistant's access.
             </p>
 
             <Subsection label="1." title="How Authentication Works">
               <p className={bodyClass}>
-                When You add the connector, Claude directs You to a Lucidity sign-in page
-                (email and password, or Google) hosted on our servers. Your credentials are
-                sent to Lucidity and not to Anthropic. On successful sign-in, we issue Claude
-                an OAuth access token and a refresh token scoped to Your account. These
-                tokens are stored on our servers so that Claude can call our application
-                programming interfaces on Your behalf until You disconnect the connector or
-                delete Your account.
+                When You add the connector, the assistant directs You to a Lucidity sign-in
+                page (email and password, or Google) hosted on our servers. Your credentials
+                are sent to Lucidity and not to the assistant's provider. On successful
+                sign-in, we issue that assistant an OAuth access token and a refresh token
+                scoped to Your account. These tokens are stored on our servers so that the
+                assistant can call our application programming interfaces on Your behalf
+                until You disconnect the connector or delete Your account.
               </p>
             </Subsection>
 
             <Subsection label="2." title="What Data Flows During Use">
               <p className={bodyClass}>
-                Each time You ask Claude a question that uses one of the connector's tools,
-                Anthropic transmits the tool request (the parameters Claude constructed, such
-                as a date range or a metric name) to Lucidity, and Lucidity returns
-                aggregated advertising and analytics data drawn from the same data sources
-                that the rest of our services read. That data becomes part of Your Claude
-                conversation and is handled by Anthropic under Anthropic's own privacy terms,
-                available at{" "}
-                <a
-                  href="https://www.anthropic.com/legal/privacy"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary underline-offset-4 hover:underline"
-                >
-                  https://www.anthropic.com/legal/privacy
-                </a>
-                . The connector is read-only; no tool spends money, changes campaign
-                settings, or writes to Your advertising accounts.
+                Each time You ask the assistant a question that uses one of the connector's
+                tools, its provider transmits the tool request (the parameters the assistant
+                constructed, such as a date range or a metric name) to Lucidity, and Lucidity
+                returns aggregated advertising and analytics data drawn from the same data
+                sources that the rest of our services read. That data becomes part of Your
+                conversation with the assistant and is handled by that provider under its own
+                privacy terms:
+              </p>
+              <ul className={listClass}>
+                {aiAssistants.map((a) => (
+                  <li key={a.provider}>
+                    {a.provider} —{" "}
+                    <a
+                      href={a.privacyUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary underline-offset-4 hover:underline"
+                    >
+                      {a.privacyUrl}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              <p className={`mt-4 ${bodyClass}`}>
+                The connectors read from Your connected accounts and never write back to
+                them. No tool spends money, changes campaign settings, or alters Your
+                advertising accounts. The only data a connector writes is the report
+                structures You choose to save, which are stored in Your Lucidity account.
               </p>
             </Subsection>
 
@@ -407,7 +441,7 @@ const PrivacyPolicy = () => {
                 For each tool call, we log per-call operational telemetry, including the tool
                 name, the calling user and organization, timing, success or failure, and an
                 anonymized error signature when a call fails. We do not record the tool
-                parameters, the returned data, or the surrounding Claude conversation. This
+                parameters, the returned data, or the surrounding conversation. This
                 telemetry is retained for up to twelve (12) months and is used solely to
                 monitor reliability and detect abuse.
               </p>
@@ -415,10 +449,10 @@ const PrivacyPolicy = () => {
 
             <Subsection label="4." title="Your Controls">
               <p className={bodyClass}>
-                You may disconnect the connector at any time from Claude's Connectors
-                settings. Doing so revokes Claude's refresh token and stops all further tool
-                calls immediately. Deleting Your Lucidity account also revokes any active
-                tokens previously issued to Claude on Your behalf.
+                You may disconnect a connector at any time from the assistant's own connector
+                settings. Doing so revokes that assistant's refresh token and stops all
+                further tool calls immediately. Deleting Your Lucidity account also revokes
+                any active tokens previously issued to any assistant on Your behalf.
               </p>
             </Subsection>
           </Section>
